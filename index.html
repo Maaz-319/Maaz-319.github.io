@@ -5,65 +5,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maaz Bin Asif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <script text="text/javascript">
+        $(document).ready(function () {
+
+            $(".pfp__div").hide();
+            $(".container").hide();
+            $(".container").slideDown(2000);
+            $(".pfp__div").fadeIn(2000);
+
+            $(".fa-envelope").hover(function () {
+                $(this).css("color", "red");
+            }, function () {
+                $(this).css("color", "white");
+            });
+            $(".fa-linkedin").hover(function () {
+                $(this).css("color", "blue");
+            }, function () {
+                $(this).css("color", "white");
+            });
+            $(".fa-instagram").hover(function () {
+                $(this).css("color", "orange");
+            }, function () {
+                $(this).css("color", "white");
+            });
+            $(".fa-facebook").hover(function () {
+                $(this).css("color", "blue");
+            }, function () {
+                $(this).css("color", "white");
+            });
+            $(".fa-github").hover(function () {
+                $(this).css("color", "black");
+            }, function () {
+                $(this).css("color", "white");
+            });
+        });
+    </script>
 </head>
 
-<body>
-    <div class="container">
-        <div class="navbar__div">
-            <nav class="navbar">
-                <ul class="navbar__ul">
-                    <a href="#HOME">
-                        <li class="navbar__li">Home</li>
-                    </a>
-                    <a href="#about">
-                        <li class="navbar__li">About</li>
-                    </a>
-                    <a href="#skills">
-                        <li class="navbar__li">Skills</li>
-                    </a>
-                    <a href="#education">
-                        <li class="navbar__li">Education</li>
-                    </a>
-                    <a href="#contact">
-                        <li class="navbar__li">Contact</li>
-                    </a>
-                    <a href="#code">
-                        <li class="navbar__li">Code</li>
-                    </a>
-                </ul>
-            </nav>
+<body class="bg-gradient-to-r from-violet-500 to-fuchsia-500">
+    <div class="navbar__div p-9">
+        <nav
+            class="bg-green-200 shadow-[0_5px_60px_1px_rgb(0,0,0)] self-center text-center list-none items-center rounded-full p-2">
+            <ul class=" flex list-none text-xl no-underline justify-center">
+                <a href="#HOME">
+                    <li class="mr-5">Home</li>
+                </a>
+                <a href="#about">
+                    <li class="mr-5">About</li>
+                </a>
+                <a href="#skills">
+                    <li class="mr-5">Skills</li>
+                </a>
+                <a href="#education">
+                    <li class="mr-5">Education</li>
+                </a>
+                <a href="#contact">
+                    <li class="mr-5">Contact</li>
+                </a>
+                <a href="#code">
+                    <li class="mr-5">Code</li>
+                </a>
+            </ul>
+        </nav>
+    </div>
+    <div class="container self-center m-5 shadow-[0_5px_60px_1px_rgb(255,255,255)] p-1">
+        
+        <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+        <div class="pfp__div flex my-5 justify-center">
+            <img src="pfp3.jpg" alt="Maaz Bin Asif"
+                class="profile__image w-4/12 rounded-full shadow-[0_5px_60px_1px_rgb(0,0,0)]">
         </div>
-        <div class="pfp__div">
-            <img src="pfp3.jpg" alt="Maaz Bin Asif" class="profile__image">
-        </div>
-        <div class="name__heading">Maaz Bin Asif</div>
-        <h2 class="profession__heading">Software Developer | Web Developer</h2>
-        <hr style="margin: 20px;">
-        <div class="about__me__div">
+        <div
+            class="name__heading text-3xl text-white font-bold text-center shadow-[0_5px_60px_1px_rgb(0,0,0)] w-2/4 ml-auto mr-auto rounded-full">
+            Maaz Bin Asif</div>
+        <h2
+            class="profession__heading text-xl text-slate-300 font-bold text-center shadow-[0_5px_60px_1px_rgb(0,0,0)] w-2/4 ml-auto mr-auto rounded-full my-5">
+            Software Developer | Web Developer</h2>
+        <hr class="my-5;">
+        <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+        <div class="about__me__div m-8 shadow-[0_5px_60px_1px_rgb(0,0,0)] rounded-xl p-4">
             <a id="about">
-                <h3 class="about__me-heading">About Me</h3>
+                <h3 class="about__me-heading text-center text-3xl m-auto mb-5 text-white underline w-2/4 left-1/2 p-5">
+                    About Me</h3>
             </a>
-            <p class="about__me-paragraph">I am a Young Passionate Software Developer and Web Developer. I have
+            <p class="about__me-paragraph text-justify text-2xl text-slate-300 m-auto mb-5 w-2/4 left-1/2">I am a Young
+                Passionate Software Developer and Web Developer. I have
                 experience in developing web applications and software applications. I have worked on different
                 projects
                 and have experience in different programming languages.</p>
         </div>
-        <div class="my__skills__div">
+        <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+        <div class="my__skills__div m-8 shadow-[0_5px_60px_1px_rgb(0,0,0)] rounded-xl p-4">
             <a id="skills">
-                <h3 class="my__skills-heading">My Skills</h3>
+                <h3 class="my__skills-heading text-center text-3xl m-auto mb-5 text-white underline w-2/4 left-1/2 p-5">
+                    My Skills</h3>
             </a>
-            <ul class="my__skills__list">
+            <ul class="my__skills__list text-slate-300 text-2xl list-inside mt-4 ml-80">
                 <li class="my__skills">Python (Including GUI)</li>
                 <li class="my__skills">C/C++</li>
                 <li class="my__skills">HTML</li>
-                <li class="my__skills">Css</li>
+                <li class="my__skills">CSS</li>
                 <li class="my__skills">JavaScript</li>
+                <!-- -------------------------------------------------------------------------------------------------------------------------- -->
         </div>
-        <div class="technologies__worked__in__div">
-            <h3 class="technologies__worked__in-heading">Technologies I have Worked In</h3>
-            <ul class="technologies__worked__in__list">
+        <div class="technologies__worked__in__div m-8 shadow-[0_5px_60px_1px_rgb(0,0,0)] rounded-xl p-4">
+            <h3
+                class="technologies__worked__in-heading text-center text-3xl m-auto mb-5 text-white underline w-2/4 left-1/2 p-5">
+                Technologies</h3>
+            <p
+                class="technologies__worked__in-paragraph text-justify text-2xl text-slate-300 m-auto mb-5 w-2/4 left-1/2">
+                Following are the Technologies I have Worked in.</p>
+            <hr class="line__technologies">
+            <ul class="technologies__worked__in__list text-slate-300 text-2xl list-inside mt-4 ml-80">
                 <li class="technologies__worked__in">Python TKinter GUI</li>
                 <li class="technologies__worked__in">Pygame - 2D Games</li>
                 <li class="technologies__worked__in">JQuery</li>
@@ -72,48 +129,61 @@
                 <li class="technologies__worked__in">Android Studio</li>
             </ul>
         </div>
-        <div class="education__div">
+        <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+        <div class="education__div m-8 shadow-[0_5px_60px_1px_rgb(0,0,0)] rounded-xl p-4">
             <a id="education"></a>
-            <h3 class="education-heading">Education</h3>
-            <ul class="education__ul">
-                <li class="education__li">Matriculation in Computer Science - 2020-22 - Crescent Model Higher Secondary School, Lahore</li>
-                <li class="education__li">Intermediate in Computer Science - 2022-24 - Crescent Model Higher Secondary School, Lahore</li>
-                <li class="education__li">Bachelors in Computer Science - 2024-28* - University of Punjab, Allama Iqbal Campus, Lahore</li>
+            <h3 class="education-heading text-center text-3xl m-auto mb-5 text-white underline w-2/4 left-1/2 p-5">
+                Education</h3>
+            <ul class="education__ul text-slate-300 text-2xl list-inside mt-4 ml-1">
+                <li class="education__li">Bachelors in Computer Science - 2024-28* - University of the Punjab, Lahore
+                </li>
+                <hr class="my-4">
+                <li class="education__li">Intermediate in Computer Science - 2022-24 - Crescent Model Higher Secondary
+                    School, Lahore</li>
             </ul>
         </div>
         <hr style="margin: 20px;">
-        <div class="contact__me__div">
+        <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+        <div class="contact__me__div m-8 shadow-[0_5px_60px_1px_rgb(0,0,0)] rounded-xl p-5">
             <a id="contact"></a>
-            <h3 class="contact__me-heading">Contact Me</h3>
-            <p class="contact__me__text__line">I am always willing to Talk about any Topic. Let's Connect</p>
-            <ul class="contact__me__ul">
-                <a href="mailto:maazbinaasif@gmail.com">
-                    <li class="contact__me__link">Email</li>
-                </a>
-                <a href="https://www.linkedin.com/in/maazbinasif" target="_blank">
-                    <li class="contact__me__link">LinkedIn</li>
-                </a>
-                <a href="https://www.instagram.com/maaz.binasif">
-                    <li class="contact__me__link">Instagram</li>
-                </a>
+            <h3 class="contact__me-heading text-center text-3xl m-auto mb-5 text-white underline w-2/4 left-1/2 p-5">
+                Contact Me</h3>
+            <p class="contact__me__text__line text-justify text-2xl text-slate-300 m-auto mb-5 w-2/4 left-1/2">I am
+                always open to discussing new ideas. Let's connect and explore new
+                opportunities together.</p>
+            <ul class="contact__me__ul ml-80 my-6">
+                <li class="contact__me__link inline-block mx-10 ml-20 text-slate-300 text-4xl"><a
+                        href="mailto:maazbinaasif@gmail.com" class="fa fa-envelope"></a></li>
+                <li class="contact__me__link inline-block mx-10 text-slate-300 text-4xl"><a
+                        href="https://www.linkedin.com/in/maazbinasif" target="_blank" class="fa fa-linkedin"></a>
+                </li>
+                <li class="contact__me__link inline-block mx-10 text-slate-300 text-4xl"><a
+                        href="https://www.instagram.com/maaz.binasif" target="_blank" class="fa fa-instagram"></a></li>
+                <li class="contact__me__link inline-block mx-10 text-slate-300 text-4xl"><a
+                        href="https://www.facebook.com/maaz.binaasif" target="_blank" class="fa fa-facebook"></a></li>
+            </ul>
         </div>
-        <div class="my__code__div">
+        <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+        <div class="my__code__div m-8 shadow-[0_5px_60px_1px_rgb(0,0,0)] rounded-xl p-4">
             <a id="code"></a>
-            <h3 class="my__code-heading">My Code</h3>
-            <p class="my__code-paragraph">I have worked on different projects and have experience in different
+            <h3 class="my__code-heading text-center text-3xl m-auto mb-5 text-white underline w-2/4 left-1/2 p-5">My
+                Github</h3>
+            <p class="my__code-paragraph text-justify text-2xl text-slate-300 m-auto mb-5 w-2/4 left-1/2">I have worked
+                on different projects and have experience in different
                 programming languages. I have worked on different projects and have experience in different
                 programming
                 languages. I have worked on different projects and have experience in different programming
-                languages. Check out the Code.
+                languages. Check out the Code.<br><br>
+                <a href="https://www.github.com/maaz-319"
+                    class="fa fa-github inline-block ml-60 text-slate-300 text-6xl" id="github-link"
+                    target="_blank"></a>
             </p>
-            <a href="https://www.github.com/maaz-319" target="_blank" class="github__link">Click Here</a>
         </div>
     </div>
-    <footer class="footer_">
-        <p class="footer__text">Made by 😉 by Maaz Bin Asif</p>
+    <footer
+        class="footer_ text-center text-2xl m-auto mt-5 bg-green-200 shadow-[0_5px_60px_1px_rgb(0,0,0)] self-center text-center list-none items-center rounded-full w-2/4 left-1/2 bottom-0 mb-5">
+        <p class="footer__text">&#169; 2024 Maaz Bin Asif</p>
     </footer>
-    <script src="jquery-3.7.1.js"></script>
-    <script src="script.js"></script>
 </body>
 
 </html>
