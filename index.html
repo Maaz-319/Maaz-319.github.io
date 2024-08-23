@@ -42,6 +42,14 @@
             }, function () {
                 $(this).css("color", "white");
             });
+
+            $('a[href*="#"]').on('click', function (e) {
+                e.preventDefault();
+
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top
+                }, 600, 'linear');
+            });
         });
     </script>
 </head>
@@ -73,7 +81,7 @@
         </nav>
     </div>
     <div class="container self-center m-5 shadow-[0_5px_60px_1px_rgb(255,255,255)] p-1">
-        
+
         <!-- -------------------------------------------------------------------------------------------------------------------------- -->
         <div class="pfp__div flex my-5 justify-center">
             <img src="pfp3.jpg" alt="Maaz Bin Asif"
@@ -85,7 +93,7 @@
         <h2
             class="profession__heading text-xl text-slate-300 font-bold text-center shadow-[0_5px_60px_1px_rgb(0,0,0)] w-2/4 ml-auto mr-auto rounded-full my-5">
             Software Developer | Web Developer</h2>
-        <hr class="my-5;">
+        <hr class="m-10 shadow-[0_5px_10px_50px_rgb(168, 86, 243)]">
         <!-- -------------------------------------------------------------------------------------------------------------------------- -->
         <div class="about__me__div m-8 shadow-[0_5px_60px_1px_rgb(0,0,0)] rounded-xl p-4">
             <a id="about">
@@ -118,8 +126,8 @@
                 Technologies</h3>
             <p
                 class="technologies__worked__in-paragraph text-justify text-2xl text-slate-300 m-auto mb-5 w-2/4 left-1/2">
-                Following are the Technologies I have Worked in.</p>
-            <hr class="line__technologies">
+                Following are the Technologies I have Worked in:</p>
+            <hr class="line__technologies m-5">
             <ul class="technologies__worked__in__list text-slate-300 text-2xl list-inside mt-4 ml-80">
                 <li class="technologies__worked__in">Python TKinter GUI</li>
                 <li class="technologies__worked__in">Pygame - 2D Games</li>
@@ -137,12 +145,11 @@
             <ul class="education__ul text-slate-300 text-2xl list-inside mt-4 ml-1">
                 <li class="education__li">Bachelors in Computer Science - 2024-28* - University of the Punjab, Lahore
                 </li>
-                <hr class="my-4">
+                <hr class="m-5">
                 <li class="education__li">Intermediate in Computer Science - 2022-24 - Crescent Model Higher Secondary
                     School, Lahore</li>
             </ul>
         </div>
-        <hr style="margin: 20px;">
         <!-- -------------------------------------------------------------------------------------------------------------------------- -->
         <div class="contact__me__div m-8 shadow-[0_5px_60px_1px_rgb(0,0,0)] rounded-xl p-5">
             <a id="contact"></a>
