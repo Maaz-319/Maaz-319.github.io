@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Rest APi</title>
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: "https://restcountries.eu/rest/v2/all",
+                type: "GET",
+                success: function(data) {
+                    console.log(data);
+                    var output = "";
+                    for (var i in data) {
+                        output += "<tr>";
+                        output += "<td>" + data[i].name + "</td>";
+                        output += "<td>" + data[i].capital + "</td>";
+                        output += "<td>" + data[i].population + "</td>";
+                        output += "<td>" + data[i].area + "</td>";
+                        output += "<td>" + data[i].region + "</td>";
+                        output += "<td>" + data[i].subregion + "</td>";
+                        output += "<td>" + data[i].timezones + "</td>";
+                        output += "<td>" + data[i].borders + "</td>";
+                        output += "<td>" + data[i].currencies[0].name + "</td>";
+                        output += "<td>" + data[i].languages[0].name + "</td>";
+                        output += "<td>" + data[i].flag + "</td>";
+                        output += "</tr>";
+                    }
+                    $("#table").append(output);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <table border="1" id="table">
+        <tr>
+            <th>Name</th>
+            <th>Capital</th>
+            <th>Population</th>
+            <th>Area</th>
+            <th>Region</th>
+            <th>Subregion</th>
+            <th>Timezones</th>
+            <th>Borders</th>
+            <th>Currencies</th>
+            <th>Languages</th>
+            <th>Flag</th>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUST Aggregate Calc</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            $('#container').hide().slideDown(1000);
+            $('#btn-container').hide().fadeIn(2000);
+        });
+    </script>
+</head>
+
+<body>
+    <script src="script.js"></script>
+    <h4 id="heading">Aggregate Calculator for NUST Computing Programs</h4>
+    <div id="container">
+        <input type="number" step="0.01" id="metric-perc" placeholder="Obtained Metric Marks"><br>
+        <input type="number" step="0.01" id="metric-tot" placeholder="Total Metric Marks"><br>
+
+        <input type="number" step="0.01" id="fsc-perc" placeholder="Obtained Fsc Marks (PART-1)"><br>
+        <input type="number" step="0.01" id="fsc-tot" placeholder="Total Fsc Marks (PART-1)"><br>
+
+        <input type="number" step="0.01" id="test-perc" , placeholder="Entry Obtained Marks"><br>
+        <input type="number" step="0.01" id="test-t" , placeholder="Entry Test Total Marks"><br>
+        <h3 id="result">Aggregate</h3>
+    </div>
+
+    <div id="btn-container">
+        <button onclick="calculateCost()" id="btn">Calculate</button>
+    </div>
+
+    <p id="footer"><a href="https://github.com/maaz-319">Github</a> | <a
+            href="https://linkedin.com/in/maazbinasif">LinkedIn</a><br><br>
+        <a href="https://forms.gle/YbzNw7PvH8bXPAJ57" style="font-size: 15px;" target="_blank">Report a Problem</a>
+    </p>
+
+</body>
+
+</html>

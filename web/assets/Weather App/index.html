@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App | By Maaz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body class="bg-gradient-to-r from-violet-500 to-fuchsia-500">
+    <!-- setting size for phone screen -->
+    <div class="container mx-auto lg:p-4 w-full">
+        <h1
+            class="text-3xl font-bold text-center text-white mb-4 underline shadow-[0_5px_60px_1px_rgb(0,0,0)] rounded-full lg:p-1">
+            Weather App<a href="https://www.instagram.com/maaz.binasif" class="lg:ml-10 ml-4"><span
+                    class="fa fa-instagram hover:text-red-700"></span></a><a
+                href="https://www.linkedin.com/in/maazbinasif" class="ml-4"><span
+                    class="fa fa-linkedin hover:text-blue-700"></span></a><a
+                    href="https://www.facebook.com/maaz.binaasif" class="ml-4"><span
+                        class="fa fa-facebook hover:text-purple-700"></span></a>
+        </h1>
+        <div class="flex justify-center items-center mt-10 shadow-[0_5px_20px_1px_rgb(216,70,239)]">
+            <input type="text" id="user-input"
+                class="p-2 border border-gray-300 rounded-l-lg w-full outline-none bg-slate-600 text-white"
+                placeholder="Enter City Name">
+            <button id="search-btn" class="btn bg-blue-500 text-white p-2 rounded-r-lg"><i
+                    class="fa fa-search"></i></button>
+        </div>
+        <!-- <div class="square text-center my-4 animate-ping text-slate-200">Fetching Weather...</div> -->
+        <svg class="square animate-spin h-5 w-5 bg-white m-auto mt-6" viewBox="0 0 24 24"></svg>
+        <div id="weather-info"
+            class="mt-10 p-4 bg-slate-600 rounded-lg text-white text-center text-2xl shadow-[0_5px_20px_1px_rgb(216,70,239)]">
+            <p id="field" class="lg:text-3xl text-xl lg:font-bold whitespace-nowrap"></p>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maaz Bin Asif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <script src="script.js"></script>
+    <script text="text/JavaScript">
+        $(function () {
+            $(".square").hide();
+        });
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gradient-to-r from-violet-500 to-fuchsia-500">
+    <header
+        class="header_ text-center text-4xl m-auto mt-5 bg-green-200 shadow-[0_5px_60px_1px_rgb(0,0,0)] self-center text-center list-none items-center rounded-full w-2/4 left-1/2 top-0 mt-5">
+        <h1 class="header__text">Rock Paper Scissors</h1>
+    </header>
+
+    <div class="user__control__buttons flex justify-center mt-10 shadow-[0_5px_60px_1px_rgb(0,0,0)] w-2/4 m-auto">
+        <button class="user__control__buttons__rock bg-red-500 text-white text-2xl p-2 m-2 rounded-full"
+            onclick="go('rock')">Rock</button>
+        <button class="user__control__buttons__paper bg-blue-500 text-white text-2xl p-2 m-2 rounded-full"
+            onclick="go('paper')">Paper</button>
+        <button class="user__control__buttons__scissors bg-green-500 text-white text-2xl p-2 m-2 rounded-full"
+            onclick="go('scissors')">Scissors</button>
+    </div>
+
+    <div class="animation__container justify-center flex mt-10">
+        <div class="square h-2.5 w-2.5"></div>
+    </div>
+
+    <div class="computer__choice__preview mt-10 shadow-[0_5px_60px_1px_rgb(0,0,0)] w-2/4 m-auto">
+        <h2 class="computer__choice__preview__text text-center text-2xl mt-5">Computer's Choice</h2>
+        <div class="computer__choice__preview__image flex justify-center mt-5">
+            <h1 class="computer__choice"></h1>
+            <!-- <img src="rock.png" alt="Rock" class="computer__choice__preview__image__rock hidden">
+            <img src="paper.png" alt="Paper" class="computer__choice__preview__image__paper hidden">
+            <img src="scissors.png" alt="Scissors" class="computer__choice__preview__image__scissors hidden"> -->
+        </div>
+    </div>
+
+    <footer
+        class="footer_ text-center text-2xl m-auto mt-5 bg-green-200 shadow-[0_5px_60px_1px_rgb(0,0,0)] self-center align-bottom list-none items-center rounded-full w-2/4 left-1/2 bottom-0 mb-5">
+        <p class="footer__text">&#169; 2024 Maaz Bin Asif</p>
+    </footer>
+</body>
+
+</html>

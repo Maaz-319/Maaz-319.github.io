@@ -1,0 +1,34 @@
+@keyframes square_ {
+    20% {
+        border-color: lightblue;
+        border-width: 10px;
+    }
+
+    50% {
+        border-color: palevioletred;
+        border-width: 20px;
+    }
+
+    80% {
+        border-color: orange;
+        transform: rotate(360deg);
+        border-width: 30px;
+    }
+
+    100% {
+        border-color: coral;
+        transform: rotate(0deg);
+        border-width: 5px;
+    }
+
+}
+
+
+
+.square {
+    animation-name: square_;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    border: 5px solid limegreen;
+    animation-direction: alternate-reverse
+}
