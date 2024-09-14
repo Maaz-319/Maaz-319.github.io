@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>😉Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+    <h1 id="heading">Number Guessing Game | By Maaz</h1>
+
+    <!-- ------------------------------------------------------------------------------------------------------------------ -->
+    <!-- Font Awesome CSS -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+    <!-- jQuery JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <!-- TweenMax JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script>
+    <!-- Underscore JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js'></script>
+    <!-- ------------------------------------------------------------------------------------------------------------------ -->
+
+    <script src="jquery-3.7.1.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(function () {
+            $('#message-container').hide().slideDown(1000);
+            $('#user-win-lose').hide().fadeIn(2000);
+            $('#guess-input').hide().fadeIn(3000);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="message-container">
+        <h3 id="message-label">Guess a Number between 1-50.</h3>
+        <h3 id="turns-left">Turns Left: 7</h3>
+    </div>
+
+    <input type="number" id="guess-input" class="user_input" placeholder="Enter your guess here">
+
+    <button onclick="checkGuess()" id="submit-button" class="submit_button">Guess</button>
+
+    <div id="user-win-lose">
+        <h2 id="user-win">Wins: 0</h2>
+        <h2 id="user-loss">Losses: 0</h2>
+        <button class="reset_score" onclick="resetScore()">Reset Score</button>
+    </div>
+
+
+</body>
+
+</html>

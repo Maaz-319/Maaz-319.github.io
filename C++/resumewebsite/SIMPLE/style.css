@@ -1,0 +1,436 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-image: linear-gradient(to top right, blue, lightblue);
+    margin: 0 auto;
+    /* Added margin: 0 auto; to center the content horizontally */
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: lightgreen;
+}
+
+.container {
+    max-width: 960px;
+    margin: 4px auto;
+    box-shadow: 0 0 10px white;
+    padding: 20px;
+}
+
+.pfp__div {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profile__image {
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 10px white;
+}
+
+.navbar__div {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    box-shadow: 0 0 10px white;
+    background: lightpink;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+
+.navbar__ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-right: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+.name__heading {
+    text-align: center;
+    font-size: 40px;
+    margin: auto;
+    margin-top: 20px;
+    color: white;
+    border-radius: 50px;
+    box-shadow: 0 0 10px lightgray;
+    width: 50%;
+    left: 50%;
+}
+
+.profession__heading {
+    text-align: justify;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 20px;
+    color: #333;
+    border-radius: 50px;
+    color: wheat;
+    box-shadow: 0 0 10px lightgray;
+    width: 50%;
+    left: 50%;
+}
+
+.about__me__div {
+    margin-top: 30px;
+    box-shadow: 0 0 10px white;
+    /* background: lightpink; */
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.about__me-paragraph {
+    text-align: justify;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 20px;
+    color: wheat;
+    border-radius: 50px;
+    width: 50%;
+    left: 50%;
+}
+
+.about__me-heading {
+    text-align: center;
+    font-size: 30px;
+    margin: auto;
+    margin-top: 20px;
+    color: white;
+    text-decoration: underline;
+    border-radius: 50px;
+    width: 50%;
+    left: 50%;
+}
+
+.my__skills__div {
+    margin-top: 30px;
+    box-shadow: 0 0 10px white;
+    /* background: lightpink; */
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.my__skills-heading {
+    text-align: center;
+    font-size: 30px;
+    margin: auto;
+    margin-top: 20px;
+    color: white;
+    text-decoration: underline;
+    border-radius: 50px;
+    width: 50%;
+    left: 50%;
+}
+
+.my__skills__list {
+    color: wheat;
+    font-size: 20px;
+    list-style: inside;
+    margin-top: 4%;
+    margin-left: 20%;
+}
+
+.technologies__worked__in__div {
+    margin-top: 30px;
+    box-shadow: 0 0 10px white;
+    /* background: lightpink; */
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.technologies__worked__in-heading {
+    text-align: center;
+    font-size: 30px;
+    margin: auto;
+    margin-top: 20px;
+    color: white;
+    text-decoration: underline;
+    border-radius: 50px;
+    width: 50%;
+    left: 50%;
+}
+
+.technologies__worked__in__list {
+    color: wheat;
+    font-size: 20px;
+    list-style: inside;
+    margin-top: 4%;
+    margin-left: 20%;
+}
+
+.technologies__worked__in-paragraph {
+    text-align: center;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 20px;
+    color: wheat;
+    border-radius: 50px;
+    width: 50%;
+    left: 50%;
+}
+
+.line__technologies {
+    color: wheat;
+    font-size: 20px;
+    list-style: none;
+    margin-top: 4%;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.education__div {
+    margin-top: 30px;
+    box-shadow: 0 0 10px white;
+    /* background: lightpink; */
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.education-heading {
+    text-align: justify;
+    font-size: 30px;
+    margin: auto;
+    margin-top: 20px;
+    color: white;
+    text-decoration: underline;
+    border-radius: 50px;
+    width: 50%;
+    left: 50%;
+}
+
+.education__ul {
+    color: wheat;
+    font-size: 20px;
+    margin-top: 4%;
+    margin-left: 1%;
+    text-decoration: none;
+}
+
+.contact__me__div {
+    margin-top: 30px;
+    box-shadow: 0 0 10px white;
+    /* background: lightpink; */
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.contact__me-heading {
+    text-align: center;
+    font-size: 30px;
+    margin: auto;
+    margin-top: 20px;
+    color: white;
+    text-decoration: underline;
+    border-radius: 50px;
+    width: 50%;
+    left: 50%;
+}
+
+.contact__me__ul {
+    margin-top: 4%;
+    margin-left: 25%;
+}
+
+.contact__me__ul li {
+    display: inline-block;
+    /* Display list items horizontally */
+    margin: 0 10px;
+}
+
+.contact__me__text__line {
+    color: wheat;
+    font-size: 20px;
+    list-style: none;
+    margin-top: 4%;
+    margin-left: 20%;
+}
+
+.my__code__div {
+    margin-top: 30px;
+    box-shadow: 0 0 10px white;
+    /* background: lightpink; */
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.my__code-heading {
+    text-align: center;
+    font-size: 30px;
+    margin: auto;
+    margin-top: 20px;
+    color: white;
+    text-decoration: underline;
+    border-radius: 50px;
+    width: 50%;
+    left: 50%;
+}
+
+.my__code-paragraph {
+    text-align: justify;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 20px;
+    color: wheat;
+    border-radius: 50px;
+    width: 50%;
+    left: 50%;
+}
+
+
+#github-link {
+    padding: 20px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+
+    width: 100%;
+    margin-top: 5%;
+}
+
+.footer_ {
+    text-align: center;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 20px;
+    color: black;
+    border-radius: 50px;
+    box-shadow: 0 0 10px lightgray;
+    width: 50%;
+    left: 50%;
+    background: lightpink;
+    bottom: 0;
+}
+
+.fa {
+    padding: 20px;
+    font-size: 50px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+@media (max-width: 414px) {
+
+    /* adjusting navbar width if it is a phone screen */
+    .navbar__div {
+        width: 100%;
+        padding: 0%;
+        margin: None;
+    }
+
+    nav ul li {
+        margin-right: 20px;
+        font-size: 12px;
+    }
+
+    .name__heading {
+        font-size: 25px;
+    }
+
+    .profession__heading {
+        font-size: 14px;
+        width: 70%;
+    }
+
+    .about__me-heading {
+        font-size: 20px;
+    }
+
+    .about__me-paragraph {
+        font-size: 14px;
+        width: 80%;
+    }
+
+    .my__skills-heading {
+        font-size: 20px;
+    }
+
+    .my__skills__list {
+        font-size: 14px;
+        margin-left: 10%;
+    }
+
+    .technologies__worked__in-heading {
+        font-size: 20px;
+    }
+
+    .technologies__worked__in__list {
+        font-size: 14px;
+        margin-left: 10%;
+    }
+
+    .technologies__worked__in-paragraph {
+        font-size: 12px;
+        width: 80%;
+    }
+
+    .line__technologies {
+        font-size: 14px;
+        margin-left: 10%;
+        margin-right: 13%;
+    }
+
+    .education-heading {
+        font-size: 20px;
+    }
+
+    .education__ul {
+        font-size: 14px;
+        margin-left: 1%;
+    }
+
+    .contact__me-heading {
+        font-size: 20px;
+    }
+
+    .contact__me__ul {
+        font-size: 14px;
+        margin-left: 10%;
+    }
+
+    .contact__me__text__line {
+        font-size: 14px;
+        margin-left: 10%;
+    }
+
+    .my__code-heading {
+        font-size: 20px;
+    }
+
+    .my__code-paragraph {
+        font-size: 14px;
+        width: 80%;
+    }
+
+    .github__link {
+        font-size: 15px;
+        width: 100%;
+        /* margin-left: 50%; */
+    }
+
+    .footer_ {
+        font-size: 14px;
+        width: 90%;
+    }
+
+    .fa{
+        font-size: 30px;
+        margin: 0%;
+        width: 90%;
+    }
+}
