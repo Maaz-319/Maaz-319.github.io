@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image | By Maaz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body class="bg-gradient-to-r from-blue-500 to-green-500">
+    <nav
+        class="nav__bar flex lg:justify-between lg:justify-center ml-2 lg:ml-0 items-center w-full p-2 px-3 bg-slate-700 text-white border-b-2">
+        <div class="nav__logo flex items-center">
+            <h1 class="lg:text-2xl text-xl font-bold lg:ml-2 lg:border-0 border-2 text-center px-1">Images</h1>
+        </div>
+        <div class="social__links lg:ml-5 ml-4">
+            <a href="https://www.facebook.com/maaz.binaasif"
+                class="social__link lg:text-3xl text-xl lg:mr-8 mr-4 hover:text-purple-800">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/maaz.binasif"
+                class="social__link lg:text-3xl text-xl lg:mr-8 mr-4 hover:text-red-600">
+                <i class="fa fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/maazbinasif/"
+                class="social__link lg:text-3xl text-xl lg:mr-8 mr-4 hover:text-blue-800">
+                <i class="fa fa-linkedin"></i>
+            </a>
+            <a href="https://www.github.com/maaz-319" class="social__link lg:text-3xl text-xl hover:text-slate-950">
+                <i class="fa fa-github"></i>
+            </a>
+        </div>
+    </nav>
+
+    <p class="text-sm m-2 text-white">* Images through API: unsplash</p>
+    <div class="container mx-auto text-center items-center justify-center p-3">
+
+        <svg class="square animate-spin h-5 w-5 bg-white m-auto my-6 hidden" viewBox="0 0 24 24"></svg>
+
+        <div class="image__container items-center bg-pink-200 rounded-lg text-center justify-center lg:p-3 p-2 py-5">
+            <img class="random__image mx-auto" alt="IMAGE">
+        </div>
+
+        <div class="controls__container flex flex-row justify-between lg:w-1/5 w-full mx-auto mt-12">
+            <select name="Catogory" class="catogories__options p-2 text-xl rounded-xl outline-none lg:mx-0 ml-8">
+                <option value="Food">Food</option>
+                <option value="Animals">Animals</option>
+                <option value="Music">Music</option>
+                <option value="People">People</option>
+                <option value="Art">Art</option>
+                <option value="Vehicles">Vehicles</option>
+                <option value="Random">Random</option>
+            </select>
+            <button
+                class="get__button bg-green-200 p-2 px-3 rounded-xl shadow-sm hover:bg-pink-200 active:bg-white active:shadow-xl lg:mx-0 mr-8 font-bold"
+                onclick="getImage()">Get Image</button>
+        </div>
+        <a class="downloadLinktoGO" href="#" target="_blank">
+            <button
+                class="download__button bg-green-200 p-2 px-3 rounded-xl shadow-sm hover:enabled:bg-pink-200 active:enabled:bg-white active:enabled:shadow-xl mt-8 font-bold p-1 px-8 disabled:opacity-75">Download</button>
+        </a>
+    </div>
+</body>
+
+</html>

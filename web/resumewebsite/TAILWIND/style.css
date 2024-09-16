@@ -1,0 +1,22 @@
+.cursor {
+    font-weight: bold;
+    opacity: 1;
+    animation: blink 0.7s infinite;  /* Blinking effect */
+}
+
+#animatethis {
+    animation: scrollanim 0.5s linear;
+    animation-timeline: view();
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+@keyframes scrollanim {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
