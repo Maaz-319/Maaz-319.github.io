@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maaz Bin Asif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .heading__div::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background-image: url('cover.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(1px);
+            opacity: 1;
+        }
+
+        .heading__div {
+            background: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <!-- <script src="jquery-3.7.1.js"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+    <div class="main__div w-full h-full">
+        <nav class="nav__bar bg-black rounded-t-lg p-2 flex flex-row justify-between">
+            <div class="main__header mx-4 border-2 px-2">
+                <h1 class="text-white font-bold text-3xl">Maaz</h1>
+            </div>
+
+            <div class="inPage__links mx-4">
+                <ul class="flex flex-row text-xl justify-between gap-3">
+                    <li class="inline-block p-2"><a href="#about" class="text-white">About</a></li>
+                    <li class="inline-block p-2"><a href="#skills" class="text-white">Skills</a></li>
+                    <li class="inline-block p-2"><a href="#projects" class="text-white">Projects</a></li>
+                    <li class="inline-block p-2"><a href="#contact" class="text-white">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="heading__div p-4 shadow-[0px_0px_10px_0px_black] justify-between">
+            <div class="header__content__div flex flex-row px-4">
+                <div class="headInfo__container flex flex-col justify-center m-auto h-[120px] px-6">
+                    <div class="nameHead__div mx-auto text-center rounded-xl p-1">
+                        <p class="nameHead__text text-6xl text-white font-bold">Maaz Bin Asif</p>
+                    </div>
+
+                    <hr>
+
+                    <div class="professionHead__div mx-auto text-center rounded-xl p-1">
+                        <p class="professionHead__text text-3xl text-white font-bold">Software Developer</p>
+                    </div>
+                </div>
+                <img src="pfp3.jpg" alt="Maaz Bin Asif"
+                    class="rounded-full w-[400px] h-[400px] mx-auto my-4 shadow-[0px_0px_10px_0px_black]">
+            </div>
+        </div>
+
+        <div class="content__container p-2 bg-gradient-to-tl from-slate-900 to-blue-950 w-full h-full px-8">
+            <a id="about"></a>
+            <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 py-12">
+                <div class="header text-center text-white font-bold text-4xl p-2">
+                    <span class="font-bold">About Me</span>
+                </div>
+                <hr class="w-[20rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
+                <div class="content mt-6 px-12">
+                    <p class="text-sky-200 text-2xl p-2 text-left">
+                        I am a Young Passionate <span class="text-green-500 font-mono">[Software Developer]</span> -
+                        <span class="text-green-500 font-mono">[Web Developer]</span> and <span
+                            class="text-green-500 font-mono">[AI Enthusiast]</span>. I have experience in developing
+                        web applications and software applications. I have worked on different projects and have
+                        experience in different programming languages. I am a quick learner and always ready to learn
+                        something new. I also love to learn and work in <span class="text-green-500 font-mono">AI</span>
+                        and <span class="text-green-500 font-mono">Machine Learning</span>.
+                    </p>
+                </div>
+            </div>
+            <!-- ================================================================================================== -->
+            <a id="skills"></a>
+            <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 py-12">
+                <div class="header text-center text-white font-bold text-4xl p-2" id="about">
+                    <span class="font-bold">Skills</span>
+                </div>
+                <hr class="w-[20rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
+                <div class="content mt-6 px-12">
+                    <ul class="skills__list flex flex-row gap-4 justify-center">
+                        <li><img src="languages/python.svg" alt="Python" class="w-[5rem]" title="Python"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li><img src="languages/c++.svg" alt="C++" class="w-[5rem]" title="C++"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li><img src="languages/c.svg" alt="C Language" class="w-[5rem]" title="C Language"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li><img src="languages/html.svg" alt="HTML" class="w-[5rem]" title="HTML 5"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li><img src="languages/js.svg" alt="JavaScript" class="w-[5rem]" title="JavaScript"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li class="fa fa-css3 font-bold text-white text-6xl mt-3" title="CSS 3"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li><img src="languages/kotlin.svg" alt="Kotlin - Android" class="w-[5rem]"
+                                title="Kotlin - Android"></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- ================================================================================================== -->
+            <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 py-12">
+                <div class="header text-center text-white font-bold text-4xl p-2" id="about">
+                    <span class="font-bold">Tools and Frameworks</span>
+                </div>
+                <hr class="w-[20rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
+                <div class="content mt-6 px-12">
+                    <ul class="skills__list flex flex-row gap-4 justify-center">
+                        <li><img src="tools&frameworks/pygame.svg" alt="Pygame - Python" class="w-[10rem] mt-2"
+                                title="Pygame - 2D Games in Python"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li><img src="tools&frameworks/pandas.svg" alt="Pandas" class="w-[5rem]"
+                                title="Pandas - Python"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <!-- <li><img src="tools&frameworks/numpy.svg" alt="Numpy" class="w-[5rem]" title="Numpy - Python"></li> -->
+                        <li><img src="tools&frameworks/tkinter.svg" alt="Tkinter - Python" class="w-[5rem] bg-white"
+                                title="TKinter - GUI Apps in Python"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li><img src="tools&frameworks/tailwind.svg" alt="Tailwind" class="w-[5rem]"
+                                title="Tailwind CSS"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li><img src="tools&frameworks/jquery.svg" alt="JQuery" class="w-[5rem] bg-sky-200 rounded-full"
+                                title="JQuery - Javascript"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li><img src="tools&frameworks/androidstudio.svg" alt="Android Studio" class="w-[5rem]"
+                                title="Android Studio"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li><img src="tools&frameworks/pycharm.svg" alt="Pycharm" class="w-[5rem]" title="PyCharm"></li>
+                        <div class="border-l-[2px] border-gray-600 h-[50px] mt-4"></div>
+                        <li><img src="tools&frameworks/github.svg" alt="Github" class="w-[5rem]" title="Github"></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- ================================================================================================== -->
+            <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 py-12">
+                <div class="header text-center text-white font-bold text-4xl p-2" id="about">
+                    <span class="font-bold">Education</span>
+                </div>
+                <hr class="w-[20rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
+                <div class="content mt-6 px-12">
+                    <ul
+                        class="skills__list flex flex-col gap-4 justify-center list-disc text-sky-200 text-2xl p-2 text-left">
+                        <li>Bachelors in Computer Science - <span class="text-green-500">2024-28</span>* - University of
+                            the Punjab, Lahore.</li>
+                        <hr>
+                        <li>Intermediate in Computer Science - <span class="text-green-500">2022-24</span> - Crescent
+                            Model Higher Secondary School, Lahore.
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- ================================================================================================== -->
+            <a id="projects"></a>
+            <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 py-12">
+                <div class="header text-center text-white font-bold text-4xl p-2" id="about">
+                    <span class="font-bold">Projects</span>
+                </div>
+                <hr class="w-[20rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
+                <div class="content mt-6 px-12">
+                    <div class="python__projects__container text-sky-200 text-xl p-1">
+                        <h1 class="text-2xl text-green-500 underline font-mono my-4">Python Projects</h1>
+                        <div class="projects__container ml-3">
+                            <details class="cursor-pointer">
+
+                                <summary>Point of Sale System</summary>
+                                <div class="text-center ml-2">
+                                    <p>⸺ POS using TKinter and OOPS</p>
+                                    <iframe class="mx-auto my-4 rounded-xl w-full h-96 lg:h-[600px]"
+                                        src="https://drive.google.com/file/d/1xuRiCs1ytBF1gjOfgYDgkjLyP-GTCiEC/preview"
+                                        allow="autoplay"></iframe>
+
+                                    <a href="https://github.com/Maaz-319/Python/tree/main/POS/With_Data_base(sqlite)"
+                                        target="_blank">
+                                        <button
+                                            class="text-white bg-gradient-to-l from-sky-800 to-green-700 py-1 px-4 rounded-xl hover:opacity-75 active:opacity-85">Code</button>
+                                    </a>
+                                </div>
+                            </details>
+                            <!-- ******************************************************************* -->
+                            <details class="cursor-pointer">
+
+                                <summary>Library Management System</summary>
+
+                                <div class="text-center">
+                                    <p>⸺ LMS using TKinter and OOPS</p>
+                                    <iframe class="mx-auto my-4 rounded-xl w-full h-96 lg:h-[600px]"
+                                        src="https://drive.google.com/file/d/19XIcK7t9twrRtJahIZ6pGlT0z2ry_zsy/preview"
+                                        allow="autoplay"></iframe>
+
+                                    <a href="https://github.com/Maaz-319/Python/tree/main/Library%20Mangement%20System"
+                                        target="_blank">
+                                        <button
+                                            class="text-white bg-gradient-to-l from-sky-800 to-green-700 py-1 px-4 rounded-xl hover:border-2 active:border-0">Code</button>
+                                    </a>
+                                </div>
+                            </details>
+                            <!-- ******************************************************************* -->
+                            <details class="cursor-pointer">
+
+                                <summary>Audio Player</summary>
+
+                                <div class="text-center">
+                                    <p>⸺ Audio Player using TKinter and OOPS</p>
+                                    <iframe class="mx-auto my-4 rounded-xl w-full h-96 lg:h-[600px]"
+                                        src="https://drive.google.com/file/d/1gw-Z2faal04dvgUNjLzTrMdzdk6XMPFD/preview"
+                                        allow="autoplay"></iframe>
+
+                                    <a href="https://github.com/Maaz-319/Python/tree/main/Audio%20Player%20(Simple)/version%202"
+                                        target="_blank">
+                                        <button
+                                            class="text-white bg-gradient-to-l from-sky-800 to-green-700 py-1 px-4 rounded-xl hover:border-2 active:border-0">Code</button>
+                                    </a>
+                                </div>
+                            </details>
+                            <!-- ******************************************************************* -->
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sky-300 ml-8 mt-2 border-b-2 border-sky-300 py-1">Want to see my All Python
+                            Projects? Check out My
+                            <a href="https://www.github.com/maaz-319/python" class="text-green-500 underline"
+                                target="_blank">Repo</a> <span class="font-bold text-lg">OR</span> <a
+                                href="https://maaz-319.github.io/python/index.html" class="text-green-500 underline"
+                                target="_blank">Video Previews</a>
+                        </p>
+                    </div>
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="web__projects__container text-sky-200 text-xl p-1">
+                        <h1 class="text-2xl text-green-500 underline font-mono my-4">Web Projects</h1>
+                        <div class="projects__container ml-3">
+                            <details class="cursor-pointer">
+
+                                <summary>Portfolio Website</summary>
+                                <div class="text-center ml-2">
+                                    <p class="my-4">⸺ Using HTML, Jquery, Tailwind. All my Projects are available here.
+                                    </p>
+                                    <a href="https://github.com/Maaz-319/Maaz-319.github.io" target="_blank">
+                                        <button
+                                            class="text-white bg-gradient-to-l from-sky-800 to-green-700 py-1 px-4 rounded-xl hover:opacity-75 active:opacity-85">Code</button>
+                                    </a>
+
+                                    <a href="https://maaz-319.github.io" target="_blank">
+                                        <button
+                                            class="text-white bg-gradient-to-l ml-4 from-sky-800 to-green-700 py-1 px-4 rounded-xl hover:opacity-75 active:opacity-85">Visit
+                                            Live</button>
+                                    </a>
+                                </div>
+                            </details>
+                            <!-- ******************************************************************* -->
+                            <details class="cursor-pointer">
+
+                                <summary>Movie Info</summary>
+                                <div class="text-center ml-2">
+                                    <p class="my-4">⸺ Using HTML, Jquery, Tailwind. Get Latest info about Movies</p>
+                                    <a href="https://github.com/Maaz-319/Maaz-319.github.io/tree/main/web/assets/movie-Info"
+                                        target="_blank">
+                                        <button
+                                            class="text-white bg-gradient-to-l from-sky-800 to-green-700 py-1 px-4 rounded-xl hover:opacity-75 active:opacity-85">Code</button>
+                                    </a>
+
+                                    <a href="https://maaz-319.github.io/web/assets/movie-Info/index.html"
+                                        target="_blank">
+                                        <button
+                                            class="text-white bg-gradient-to-l ml-4 from-sky-800 to-green-700 py-1 px-4 rounded-xl hover:opacity-75 active:opacity-85">Visit
+                                            Live</button>
+                                    </a>
+                                </div>
+                            </details>
+                            <!-- ******************************************************************* -->
+                            <details class="cursor-pointer">
+
+                                <summary>Quiz Game</summary>
+                                <div class="text-center ml-2">
+                                    <p class="my-4">⸺ Using HTML, Jquery, Tailwind. You can select your favourite
+                                        Catogory to Play.</p>
+                                    <a href="https://github.com/Maaz-319/Maaz-319.github.io/tree/main/web/assets/quizgame"
+                                        target="_blank">
+                                        <button
+                                            class="text-white bg-gradient-to-l from-sky-800 to-green-700 py-1 px-4 rounded-xl hover:opacity-75 active:opacity-85">Code</button>
+                                    </a>
+
+                                    <a href="https://maaz-319.github.io/web/assets/quizgame/index.html" target="_blank">
+                                        <button
+                                            class="text-white bg-gradient-to-l ml-4 from-sky-800 to-green-700 py-1 px-4 rounded-xl hover:opacity-75 active:opacity-85">Visit
+                                            Live</button>
+                                    </a>
+                                </div>
+                            </details>
+                            <!-- ******************************************************************* -->
+                        </div>
+                    </div>
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="text-center">
+                        <p class="text-sky-300 ml-8 mt-2 border-b-2 border-sky-300 py-1">Want to see my All WEB Projects?
+                            Check out My
+                            <a href="https://github.com/Maaz-319/Maaz-319.github.io/tree/main/web/assets"
+                                class="text-green-500 underline" target="_blank">Repo</a> <span
+                                class="font-bold text-lg">OR</span> <a href="https://maaz-319.github.io/web/index.html"
+                                class="text-green-500 underline" target="_blank">Visit Live</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ================================================================================================== -->
+            <a id="contact"></a>
+            <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 py-12">
+                <div class="header text-center text-white font-bold text-4xl p-2" id="about">
+                    <span class="font-bold">Contact Me</span>
+                </div>
+                <hr class="w-[20rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
+                <div class="content mt-6 px-12">
+                    <p class="text-sky-200 text-2xl p-2 text-left">
+                        Feel free to reach out for any inquiries or collaborations.
+                    </p>
+                    <ul class="list-none flex flex-row justify-between lg:mx-[140px] mt-5">
+                        <li
+                            class="contact__me__link inline-block lg:mx-10 lg:ml-0 text-slate-100 text-3xl lg:text-4xl hover:text-red-700 ml-8">
+                            <a href="mailto:maazbinaasif@gmail.com" class="fa fa-envelope"></a>
+                        </li>
+                        <li
+                            class="contact__me__link inline-block lg:mx-10 lg:ml-20 text-slate-100 text-3xl lg:text-4xl hover:text-blue-700 ml-4">
+                            <a href="https://www.linkedin.com/in/maazbinasif" target="_blank"
+                                class="fa fa-linkedin"></a>
+                        </li>
+                        <li
+                            class="contact__me__link inline-block lg:mx-10 lg:ml-20 text-slate-100 text-3xl lg:text-4xl hover:text-purple-800 ml-4">
+                            <a href="https://www.instagram.com/maaz.binasif" target="_blank"
+                                class="fa fa-instagram"></a>
+                        </li>
+                        <li
+                            class="contact__me__link inline-block lg:mx-10 lg:ml-20 text-slate-100 text-3xl lg:text-4xl hover:text-blue-700 ml-4">
+                            <a href="https://www.facebook.com/maaz.binaasif" target="_blank" class="fa fa-facebook"></a>
+                        </li>
+                        <li
+                            class="contact__me__link inline-block lg:mx-10 lg:ml-20 text-slate-100 text-3xl lg:text-4xl hover:text-blue-700 ml-4">
+                            <a href="https://maaz-319.github.io" target="_blank" class="fa fa-globe" title="Portfolio Website"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- ================================================================================================== -->
+            <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 py-12">
+                <div class="header text-center text-white font-bold text-4xl p-2" id="about">
+                    <span class="font-bold">Languages</span>
+                </div>
+                <hr class="w-[20rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
+                <div class="content mt-6 px-12">
+                    <ul
+                        class="skills__list flex flex-col gap-4 justify-center list-disc text-sky-200 text-3xl p-2 text-left">
+                        <li>Urdu - <span class="text-green-500">Native</span></li>
+                        <hr>
+                        <li>English - <span class="text-green-500">Fluent</span>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- ================================================================================================== -->
+            <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 py-12">
+                <div class="header text-center text-white font-bold text-4xl p-2" id="about">
+                    <span class="font-bold">Github</span>
+                </div>
+                <hr class="w-[20rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
+                <div class="content mt-6 px-12 text-center">
+                    <p class="text-sky-200 text-2xl p-2 text-left">
+                        I have worked on different projects and have experience in different programming languages. I
+                        have worked on different projects and have experience in different programming languages. I have
+                        worked on different projects and have experience in different programming languages. Check out
+                        the
+                        Code.
+                    </p>
+                    <a href="https://www.github.com/maaz-319"
+                        class="fa fa-github inline-block lg:ml-0 text-slate-100 text-6xl hover:text-slate-950 mt-4"
+                        id="github-link" target="_blank"></a>
+                </div>
+            </div>
+            <!-- ================================================================================================== -->
+        </div>
+        <div class="footer bg-black rounded-b-lg p-2 text-white text-center text-xl py-6">
+            <p>© 2024 <span class="text-green-500">Maaz Bin Asif</span></p>
+        </div>
+    </div>
+
+</body>
+
+</html>
