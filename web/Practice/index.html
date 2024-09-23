@@ -1,39 +1,239 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Sticky Navigation</title>
-  </head>
-  <body>
-    <nav class="nav">
-      <div class="container">
-        <h1 class="logo"><a href="/index.html">My Website</a></h1>
-        <ul>
-          <li><a href="#" class="current">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
+<!-- component -->
+<html class="bg-zinc-500" aria-hidden="true">
 
-    <div class="hero">
-      <div class="container">
-        <h1>Welcome To My Website</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores, consequuntur?</p>
+<head>
+  <link rel="stylesheet"
+    href="https://horizon-ui.com/shadcn-nextjs-boilerplate/_next/static/css/12f72a06cf11dcdf.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-zinc-950">
+  <div class="flex flex-col justify-center items-center bg-zinc-950 h-max min-h-[100vh] pb-5">
+    <div
+      class="mx-auto flex w-full mt-10 flex-col justify-center px-5 pt-0 md:h-[unset] md:max-w-[80%] lg:h-[90vh] lg:max-w-[80%] lg:px-6 xl:pl-0">
+
+      <div
+        class="rounded-lg border max-h-[700px] bg-card text-card-foreground shadow-sm mx-auto h-[96.5vh] w-[330px] overflow-hidden !rounded-lg pe-4 border-zinc-800 ">
+        <div style="
+              position: relative;
+              overflow: hidden;
+              width: 100%;
+              height: 100%;
+            ">
+          <div class="!translate-x-[5.5%] pe-1 xl:!-mr-8 xl:w-[calc(100%_+_20px)]" style="
+                position: absolute;
+                inset: 0px;
+                overflow: scroll;
+                margin-right: 0px;
+                margin-bottom: -22px;
+                width: 100%;
+              ">
+            <div class="flex h-full flex-col justify-between">
+              <div>
+                <div class="mt-8 flex items-center justify-center">
+                  <div
+                    class="me-2 flex h-[40px] w-[40px] items-center justify-center rounded-md bg-white text-zinc-950">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                      aria-hidden="true" class="h-5 w-5" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                  <h5 class="me-2 text-2xl font-bold leading-5 text-white">
+                    Horizon AI
+                  </h5>
+                  <div
+                    class="inline-flex items-center rounded-full border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 my-auto w-max px-2 py-0.5 text-xs border-none bg-zinc-800 text-white">
+                    FREE
+                  </div>
+                </div>
+                <div class="mb-8 mt-8 h-px bg-white/10"></div>
+                <ul>
+                  <div>
+                    <div
+                      class="flex w-full max-w-full items-center justify-between rounded-lg py-3 pl-8 font-medium text-zinc-400">
+                      <a class="undefined" href="/shadcn-nextjs-boilerplate/dashboard/main"
+                        style="border-radius: 0px; width: 100%">
+                        <div class="w-full items-center justify-center">
+                          <div class="flex w-full items-center justify-center">
+                            <div class="text mr-3 mt-1.5 text-white">
+                              <svg stroke="currentColor" fill="none" stroke-width="1.5" viewBox="0 0 24 24"
+                                aria-hidden="true" class="-mt-[7px] h-4 w-4 stroke-2 text-inherit" height="1em"
+                                width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25">
+                                </path>
+                              </svg>
+                            </div>
+                            <p class="mr-auto text-sm font-medium text-zinc-400">
+                              Main Dashboard
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      class="flex w-full max-w-full items-center justify-between rounded-lg py-3 pl-8 font-semibold bg-white text-zinc-950">
+                      <a class="undefined" href="/shadcn-nextjs-boilerplate/dashboard/ai-chat"
+                        style="border-radius: 0px; width: 100%">
+                        <div class="w-full items-center justify-center">
+                          <div class="flex w-full items-center justify-center">
+                            <div class="text mr-3 mt-1.5 font-semibold text-zinc-950">
+                              <svg stroke="currentColor" fill="none" stroke-width="1.5" viewBox="0 0 24 24"
+                                aria-hidden="true" class="-mt-[7px] h-4 w-4 stroke-2 text-inherit" height="1em"
+                                width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z">
+                                </path>
+                              </svg>
+                            </div>
+                            <p class="mr-auto text-sm font-semibold text-zinc-950">
+                              AI Chat
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    class="flex w-full max-w-full  items-center justify-between rounded-lg py-3 pl-8 font-medium">
+                    <div class="w-full items-center justify-center">
+                      <div class="flex w-full items-center justify-center">
+                        <div class="text mr-3 mt-1.5 text-white">
+                          <svg stroke="currentColor" fill="none" stroke-width="1.5" viewBox="0 0 24 24"
+                            aria-hidden="true" class="-mt-[7px] h-4 w-4 stroke-2 text-inherit" height="1em" width="1em"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
+                          </svg>
+                        </div>
+                        <p class="mr-auto text-sm text-white">
+                          Profile Settings
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="flex w-full max-w-full  items-center justify-between rounded-lg py-3 pl-8 font-medium">
+                    <div class="w-full items-center justify-center">
+                      <div class="flex w-full items-center justify-center">
+                        <div class="text mr-3 mt-1.5 text-white">
+                          <svg stroke="currentColor" fill="none" stroke-width="1.5" viewBox="0 0 24 24"
+                            aria-hidden="true" class="-mt-[7px] h-4 w-4 stroke-2 text-inherit" height="1em" width="1em"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z">
+                            </path>
+                          </svg>
+                        </div>
+                        <p class="mr-auto text-sm text-white">
+                          Subscription
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="flex w-full max-w-full  items-center justify-between rounded-lg py-3 pl-8 font-medium">
+                    <div class="w-full items-center justify-center">
+                      <div class="flex w-full items-center justify-center">
+                        <div class="text mr-3 mt-1.5 text-white">
+                          <svg stroke="currentColor" fill="none" stroke-width="1.5" viewBox="0 0 24 24"
+                            aria-hidden="true" class="-mt-[7px] h-4 w-4 stroke-2 text-inherit" height="1em" width="1em"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z">
+                            </path>
+                          </svg>
+                        </div>
+                        <p class="mr-auto text-sm text-white">
+                          Landing Page
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="flex w-full max-w-full  items-center justify-between rounded-lg py-3 pl-8 font-medium">
+                    <div class="w-full items-center justify-center">
+                      <div class="flex w-full items-center justify-center">
+                        <div class="text mr-3 mt-1.5 text-white">
+                          <svg stroke="currentColor" fill="none" stroke-width="1.5" viewBox="0 0 24 24"
+                            aria-hidden="true" class="-mt-[7px] h-4 w-4 stroke-2 text-inherit" height="1em" width="1em"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z">
+                            </path>
+                          </svg>
+                        </div>
+                        <p class="mr-auto text-sm text-white">
+                          Pricing Page
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div style="
+                position: absolute;
+                height: 6px;
+                transition: opacity 200ms;
+                opacity: 0;
+                right: 2px;
+                bottom: 2px;
+                left: 2px;
+                border-radius: 3px;
+                display: none;
+              ">
+            <div style="
+                  position: relative;
+                  display: block;
+                  height: 100%;
+                  cursor: pointer;
+                  border-radius: inherit;
+                  background-color: rgba(0, 0, 0, 0.2);
+                  width: 0px;
+                "></div>
+          </div>
+          <div class="xl:pr-3.5" style="
+                position: absolute;
+                width: 6px;
+                transition: opacity 200ms;
+                opacity: 0;
+                max-width: 100%;
+                background: transparent;
+                bottom: 2px;
+                top: 2px;
+                border-radius: 3px;
+                right: 0px;
+                display: none;
+              ">
+            <div style="
+                  position: relative;
+                  display: block;
+                  width: 100%;
+                  border-radius: 15px;
+                  height: 235px;
+                  transform: translateY(0px);
+                "></div>
+          </div>
+        </div>
       </div>
     </div>
+    <p class="font-normal text-white mt-20 mx-auto w-max">
+      Sidebar dark mode component from
+      <a href="https://horizon-ui.com/shadcn-ui?ref=twcomponents" target="_blank"
+        class="text-brand-500 font-bold">Horizon AI Boilerplate</a>
+    </p>
+  </div>
+</body>
 
-    <section class="container content">
-      <h2>Content One</h2>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione dolorem voluptates eveniet tempora ut cupiditate magnam, sapiente, hic quo in ipsum iste soluta eaque perferendis nihil recusandae dolore officia aperiam corporis similique. Facilis quos tempore labore totam! Consectetur molestiae iusto ducimus error reiciendis aspernatur dolor, modi dolorem sit architecto, voluptate magni sunt unde est quas? Voluptates a dolorum voluptatum quo perferendis aut sit. Aspernatur libero laboriosam ab eligendi omnis delectus earum labore, placeat officiis sint illum rem voluptas ipsum repellendus iste eius recusandae quae excepturi facere, iure rerum sequi? Illum velit delectus dicta et iste dolorum obcaecati minus odio eligendi!</p>
-
-      <h3>Content Two</h3>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur provident nostrum possimus inventore nisi laboriosam consequatur modi nulla eos, commodi, omnis distinctio! Maxime distinctio impedit provident, voluptates illo odio nostrum minima beatae similique a sint sapiente voluptatum atque optio illum est! Tenetur tempora doloremque quae iste aperiam hic cumque repellat?</p>
-    </section>
-
-    <script src="script.js"></script>
-  </body>
 </html>

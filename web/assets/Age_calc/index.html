@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calc | By Maaz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body class="bg-zinc-800">
+    <div class="container__div flex flex-col justify-between lg:gap-8 gap-16">
+        <nav class="nav__bar bg-black rounded-t-lg py-2 flex flex-row justify-between hidden lg:flex">
+            <div class="main__header mx-4 border-2 px-1">
+                <h1 class="text-white font-bold text-3xl font-[Pacifico]">Age Calculator</h1>
+            </div>
+
+            <div class="inPage__links mx-4">
+                <ul class="flex flex-row text-xl justify-between gap-8 mt-1 text-sky-200">
+                    <li class="inline-block"><a href="https://www.linkedin.com/in/maazbinasif/"
+                            class="fa fa-linkedin hover:border-b-2 border-sky-300 active:opacity-50"></a></li>
+                    <li class="inline-block"><a href="https://www.instagram.com/maaz.binasif/"
+                            class="fa fa-instagram hover:border-b-2 border-sky-300 active:opacity-50"></a></li>
+                    <li class="inline-block"><a href="https://www.facebook.com/in/maaz.binaasif/"
+                            class="fa fa-facebook hover:border-b-2 border-sky-300 active:opacity-50"></a></li>
+                    <li class="inline-block"><a href="mailto:maazbinaasif@gmail.com"
+                            class="fa fa-envelope hover:border-b-2 border-sky-300 active:opacity-50"></a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <nav class="nav__bar bg-black rounded-t-lg py-2 flex flex-col justify-between block lg:hidden">
+
+            <div class="flex flex-row justify-between">
+                <button class="navbar__toggle block lg:hidden text-white text-2xl p-2 mx-4 active:opacity-50"
+                    id="navbar__toggle" onclick="navToggle()">
+                    <i class="fa fa-bars text-white"></i>
+                </button>
+
+                <div class="main__header mx-4 px-1 mt-2">
+                    <h1 class="text-white font-bold text-3xl font-[Pacifico]">Age Calc</h1>
+                </div>
+            </div>
+
+            <div class="inPage__links mx-4 hidden">
+                <hr class="w-full mx-2 my-4 shadow-[0px_10px_8px_1px_black]">
+                <ul class="flex flex-row text-xl justify-between gap-2 mt-1 text-sky-200 text-center mx-6">
+                    <li class="inline-block"><a href="https://www.linkedin.com/in/maazbinasif/"
+                            class="fa fa-linkedin hover:border-b-2 border-sky-300 active:opacity-50"></a></li>
+                    <li class="inline-block"><a href="https://www.instagram.com/maaz.binasif/"
+                            class="fa fa-instagram hover:border-b-2 border-sky-300 active:opacity-50"></a></li>
+                    <li class="inline-block"><a href="https://www.facebook.com/in/maaz.binaasif/"
+                            class="fa fa-facebook hover:border-b-2 border-sky-300 active:opacity-50"></a></li>
+                    <li class="inline-block"><a href="mailto:maazbinaasif@gmail.com"
+                            class="fa fa-envelope hover:border-b-2 border-sky-300 active:opacity-50"></a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- ⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻ -->
+        <!-- ⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻ -->
+        <!-- ⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻ -->
+        <div class="main__container p-4">
+            <div
+                class="main__window bg-sky-200 rounded-xl text-xl text-black justify-center items-center gap-2 flex flex-col p-4 py-24">
+                <p class="text-center text-xl font-bold text-black">
+                    Choose your birth date
+                </p>
+
+                <input type="date" class="birth__date bg-gray-400 text-bold p-2 rounded-xl"
+                    oninput="enableButton()">
+
+                <button
+                    class="calculate__button bg-black text-white p-2 rounded-xl mt-4 opacity-65 enabled:hover:opacity-75 enabled:active:opacity-100 disabled:opacity-50"
+                    disabled onclick="calculate()">Calculate</button>
+
+                <p class="age__text text-xl font-bold text-black mt-8 relative text-left mx-auto">
+                    Your Age:
+                </p>
+            </div>
+        </div>
+        <!-- ⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻ -->
+        <!-- ⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻ -->
+        <!-- ⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻ -->
+
+            <div class="footer bg-black rounded-b-lg p-2 text-white text-center text-xl pt-6 flex flex-col gap-2">
+                <p>© 2024 <span class="text-green-500">Maaz Bin Asif</span></p>
+                <p class="underline text-green-500 opacity-75 hover:opacity-90 active:opacity-100"><a href="https://maaz-319.github.io/" target="_blank">Check Other Projects</a></p>
+            </div>
+    </div>
+</body>
+
+</html>
