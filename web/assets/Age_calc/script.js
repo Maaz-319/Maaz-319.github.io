@@ -14,7 +14,10 @@ function calculate() {
     if (currentDate.getMonth() < birthDate.getMonth() || (currentDate.getMonth() == birthDate.getMonth() && currentDate.getDate() < birthDate.getDate())) {
         age--;
     }
-    // calc months
+    if (age < 0) {
+        $('.age__text').html('<span class="text-red-500">Please enter a valid date</span>');
+        return;
+    }
     var months = currentDate.getMonth() - birthDate.getMonth();
     if (months < 0) {
         months = 12 + months;
@@ -23,7 +26,7 @@ function calculate() {
         months--;
     }
     if (currentDate.getMonth() < birthDate.getMonth()) {
-        temp = `<br><br>• After ${12-months} months, you will be ${age+1} years old`;
+        temp = `<br><br>• After ${12 - months} months, you will be ${age + 1} years old`;
     } else {
         temp = `<br><br>• Your birthday was ${months} months ago`;
     }
