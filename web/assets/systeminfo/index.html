@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Info | By Maaz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+    <div class="main__div flex flex-col justify-between">
+
+        
+        <nav class="nav__bar bg-black py-2 flex flex-row justify-between hidden lg:flex">
+            <div class="main__header mx-4 border-2 px-1">
+                <h1 class="text-white font-bold text-3xl font-[Pacifico]">System</h1>
+            </div>
+        
+            <div class="inPage__links mx-4">
+                <ul class="flex flex-row text-xl justify-between gap-8 mt-1 text-sky-200 mr-4">
+                    <li class="inline-block mr-10"><a href="https://maaz-319.github.io/web"
+                            class="fa fa-home hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                            |
+                    <li class="inline-block"><a href="https://linkedin.com/in/maazbinasif"
+                            class="fa fa-linkedin hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                    <li class="inline-block"><a href="https://www.instagram.com/maaz.binasif"
+                            class="fa fa-instagram hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                    <li class="inline-block"><a href="https://www.facebook.com/maaz.binaasif"
+                            class="fa fa-facebook hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                    <li class="inline-block"><a href="https://www.github.com/maaz-319"
+                            class="fa fa-github hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                    <li class="inline-block"><a href="https://maaz.me"
+                            class="fa fa-globe hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <nav class="nav__bar bg-black py-2 flex flex-col justify-between block lg:hidden">
+        
+            <div class="flex flex-row justify-between">
+                <button class="navbar__toggle block lg:hidden text-white text-2xl p-2 mx-4 active:opacity-50"
+                    id="navbar__toggle" onclick="navToggle()">
+                    <i class="fa fa-bars text-white"></i>
+                </button>
+        
+                <div class="main__header mx-4 px-1 mt-2">
+                    <h1 class="text-white font-bold text-3xl font-[Pacifico]">Maaz</h1>
+                </div>
+            </div>
+        
+            <div class="inPage__links mx-4 hidden">
+                <hr class="w-full mx-2 my-4 shadow-[0px_10px_8px_1px_black]">
+                <ul class="flex flex-col text-xl justify-between gap-3 mt-1 text-sky-200 text-center">
+                    <li class="inline-block"><a href="https://maaz-319.github.io/web"
+                            class="fa fa-home hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                    <li class="inline-block"><a href="https://linkedin.com/in/maazbinasif"
+                            class="fa fa-linkedin hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                    <li class="inline-block"><a href="https://www.instagram.com/maaz.binasif"
+                            class="fa fa-instagram hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                    <li class="inline-block"><a href="https://www.facebook.com/maaz.binaasif"
+                            class="fa fa-facebook hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                    <li class="inline-block"><a href="https://www.github.com/maaz-319"
+                            class="fa fa-github hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                    <li class="inline-block"><a href="https://maaz.me"
+                            class="fa fa-globe hover:border-b-2 border-sky-300 active:opacity-50 text-2xl"></a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="content__div p-4 bg-sky-300 m-4 rounded-xl flex flex-col">
+            
+            <svg class="square animate-spin h-5 w-5 bg-white m-auto my-6 hidden" viewBox="0 0 24 24"></svg>
+            
+            <div class="browserInfo__div"></div>
+            <hr class="hr_line text-slate-950 bg-black mt-4" hidden>
+            
+            <div class="screenInfo__div"></div>
+            <hr class="hr_line text-slate-950 bg-black mt-4" hidden>
+            
+            <div class="memoryInfo__div"></div>
+            <hr class="hr_line text-slate-950 bg-black mt-4" hidden>
+            
+            <div class="onlineInfo__div"></div>
+            <hr class="hr_line text-slate-950 bg-black mt-4" hidden>
+            
+            <div class="cpuInfo__div"></div>
+            <hr class="hr_line text-slate-950 bg-black mt-4" hidden>
+
+            <div class="timezoneInfo__div"></div>
+            <hr class="hr_line text-slate-950 bg-black mt-4" hidden>
+
+            <div class="languageInfo__div"></div>
+            <hr class="hr_line text-slate-950 bg-black mt-4" hidden>
+
+            <div class="touchInfo__div"></div>
+            <hr class="hr_line text-slate-950 bg-black mt-4" hidden>
+                        
+            <button class="getInfo__button mt-8 px-4 py-2 bg-slate-700 text-white rounded-lg opacity-65 mb-4 hover:opacity-85 active:opacity-100 mx-auto" onclick="getSystemInfo()">Get System Info</button>
+        </div>
+    </div>
+</body>
+
+</html>
