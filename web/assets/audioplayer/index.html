@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M | Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body class="bg-gradient-to-l from-orange-300 to-red-400">
+    <div class="main__div w-full h-full">
+        <nav
+            class="nav__bar bg-gradient-to-l from-sky-800 to-blue-950 rounded-t-lg py-2 flex flex-row justify-between hidden lg:flex">
+            <div class="main__header mx-4 border-2 px-1">
+                <h1 class="text-white font-bold text-3xl font-[Pacifico]">Audio Player</h1>
+            </div>
+
+            <div class="inPage__links mx-4">
+                <ul class="flex flex-row text-xl justify-between gap-8 mt-1 text-sky-200">
+                    <li class="inline-block"><a href="https:maaz-319.github.io"
+                            class="fa fa-home hover:border-b-2 border-sky-300 active:opacity-50" target="_blank"></a>
+                    </li>
+                    <li class="inline-block"><a href="https://www.linkedin.com/in/maazbinasif"
+                            class="fa fa-linkedin hover:border-b-2 border-sky-300 active:opacity-50"
+                            target="_blank"></a></li>
+                    <li class="inline-block"><a href="https://www.instagram.com/maaz.binasif"
+                            class="fa fa-instagram hover:border-b-2 border-sky-300 active:opacity-50"
+                            target="_blank"></a></li>
+                    <li class="inline-block"><a href="https://www.facebook.com/maaz.binaasif"
+                            class="fa fa-facebook hover:border-b-2 border-sky-300 active:opacity-50"
+                            target="_blank"></a></li>
+                    <li class="inline-block"><a href="https://maaz.me"
+                            class="fa fa-globe hover:border-b-2 border-sky-300 active:opacity-50" target="_blank"></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <nav
+            class="nav__bar bg-gradient-to-l from-sky-800 to-blue-950 rounded-t-lg py-2 flex flex-col justify-between block lg:hidden">
+
+            <div class="flex flex-row justify-between">
+                <button class="navbar__toggle block lg:hidden text-white text-2xl p-2 mx-4 active:opacity-50"
+                    id="navbar__toggle" onclick="navToggle()">
+                    <i class="fa fa-bars text-white"></i>
+                </button>
+
+                <div class="main__header mx-4 px-1 mt-2">
+                    <h1 class="text-white font-bold text-3xl font-[Pacifico]">Audio Player</h1>
+                </div>
+            </div>
+
+            <div class="inPage__links mx-4 hidden">
+                <hr class="w-full mx-2 my-4 shadow-[0px_10px_8px_1px_black]">
+                <ul class="flex flex-col text-xl justify-between gap-3 mt-1 text-sky-200 text-center">
+                    <li class="inline-block"><a href="https:maaz-319.github.io"
+                            class="fa fa-home hover:border-b-2 border-sky-300 active:opacity-50" target="_blank"></a>
+                    <li class="inline-block"><a href="https://www.linkedin.com/in/maazbinasif"
+                            class="fa fa-linkedin hover:border-b-2 border-sky-300 active:opacity-50"
+                            target="_blank"></a></li>
+                    <li class="inline-block"><a href="https://www.instagram.com/maaz.binasif"
+                            class="fa fa-instagram hover:border-b-2 border-sky-300 active:opacity-50"
+                            target="_blank"></a></li>
+                    <li class="inline-block"><a href="https://www.facebook.com/maaz.binaasif"
+                            class="fa fa-facebook hover:border-b-2 border-sky-300 active:opacity-50"
+                            target="_blank"></a></li>
+                    <li class="inline-block"><a href="https://maaz.me"
+                            class="fa fa-globe hover:border-b-2 border-sky-300 active:opacity-50" target="_blank"></a>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="main_content px-4 py-6 shadow-[0px_0px_10px_0px_black] justify-between">
+            <div
+                class="drop__zone w-full bg-gradient-to-l from-purple-800 to-sky-500 rounded-lg text-white text-center text-2xl font-bold flex flex-col justify-center items-center lg:px-12 px-4 lg:pt-24 pt-12 pb-24 gap-4">
+
+                <p class="fa fa-music text-5xl"></p>
+                <div class="dropping__zone flex items-center justify-center w-full">
+                    <label for="dropzone-file"
+                        class="flex flex-col items-center justify-center p-4 w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                            </svg>
+                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click
+                                    to upload</span> or drag and drop</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">MP3, WAV, M4A
+                            </p>
+                        </div>
+                        <input id="dropzone-file" type="file" class="hidden" accept=".mp3, .wav" />
+                    </label>
+                </div>
+
+
+                <div class="audio__player w-full">
+                    <audio controls class="w-full" id="audio-player">
+                        <source src="" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <div class="musicInfo__div w-full hidden">
+                    <div class="music__info w-full">
+                        <div class="music__title w-full text-center text-xl font-bold">Title: <span class="song__name text-green-200"></span></div>
+                        <div class="music__artist w-full text-center text-lg">Artist: <span class="song__artist text-green-200"></span></div>
+                        <div class="music__album w-full text-center text-lg">Album: <span class="song__genre text-green-200"></span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div
+            class="footer bg-gradient-to-l from-sky-800 to-blue-950 rounded-b-lg p-2 text-white text-center text-xl py-4 lg:mt-0 mt-[7rem]">
+            <p>© 2024 <span class="text-green-500">Audio Player</span><br>By Maaz</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
