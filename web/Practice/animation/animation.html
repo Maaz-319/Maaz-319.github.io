@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Computer vs. Human</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Quantum vs Human</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+    <script src="jquery-3.7.1.js"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>Quantum Computer vs Human</h1>
-        <p>Pick Heads or Tails, and see if you can beat the Quantum Computer!</p>
-        <div class="choices">
-            <button id="heads" class="choice-button">Heads</button>
-            <button id="tails" class="choice-button">Tails</button>
+<body class="bg-gradient-to-l from-orange-300 to-purple-400 p-4">
+    <div class="container bg-gradient-to-r from-blue-300 to-green-400 p-4 rounded-lg shadow-lg flex flex-col justify-center items-center mx-auto">
+        <h1 class="text-3xl font-bold text-slate-800">Quantum Computer vs Human</h1>
+        <p class="text-xl font-bold text-slate-800">Pick Heads or Tails, and see if you can beat the Quantum Computer!</p>
+        <div class="choices my-8">
+            <button id="heads" class="choice-button bg-blue-800 text-white p-2 rounded-lg shadow-xl opacity-50 hover:opacity-75 active:opacity-100">Heads</button>
+            <button id="tails" class="choice-button bg-blue-800 text-white p-2 px-4 rounded-lg shadow-xl opacity-50 hover:opacity-75 active:opacity-100">Tails</button>
         </div>
         <div class="simulation">
-            <div id="player-choice" class="result">Your Choice: </div>
-            <div id="quantum-thinking" class="result">Quantum Computer is thinking...</div>
+            <div id="player-choice" class="result my-4">Your Choice: </div>
+            <div id="quantum-thinking" class="result">Quantum Computer Choice...</div>
             <div id="result" class="result"></div>
         </div>
     </div>

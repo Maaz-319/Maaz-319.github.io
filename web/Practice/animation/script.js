@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         quantumThinkingDisplay.style.display = "block";
         resultDisplay.style.display = "none";
 
-        playerChoiceDisplay.textContent = `Your Choice: ${playerChoice}`;
+        $('.result').html(`Your Choice: <span class="text-green-800 text-xl">${playerChoice}</span>`);
         quantumThinkingDisplay.textContent = "Quantum Computer is analyzing the coin toss...";
 
         // Simulate the coin toss
@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
             resultDisplay.style.display = "block";
 
             if (tossResult === playerChoice) {
-                resultDisplay.textContent = `Coin toss result: ${tossResult}. Quantum Computer predicted it correctly, you win!`;
+                $('#result').html(`Coin toss result: <span class="text-green-800 text-xl">${tossResult}</span>. Quantum Computer predicted it correctly`);
             } else {
-                resultDisplay.textContent = `Coin toss result: ${tossResult}. Quantum Computer predicted it correctly, it wins!`;
+                $('#result').html(`Coin toss result:  <span class="text-green-800 text-xl">${tossResult}</span>. Quantum Computer predicted it correctly`);
             }
         }, 2000);
     }
