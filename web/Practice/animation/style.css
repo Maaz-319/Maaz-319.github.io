@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+.choices {
+    margin: 20px 0;
+}
+
+.choice-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #0078d7;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.choice-button:hover {
+    background-color: #005fa3;
+}
+
+.simulation {
+    margin-top: 20px;
+}
+
+.result {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #444;
+    display: none;
+}
+
+#quantum-thinking {
+    animation: thinking-animation 2s linear infinite;
+}
+
+@keyframes thinking-animation {
+    0%, 100% {
+        color: #444;
+    }
+    50% {
+        color: #0078d7;
+    }
+}
