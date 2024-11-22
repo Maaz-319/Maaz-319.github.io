@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qubit Visualizer</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="simulator" class="text-center">
+    <h1 class="text-5xl bg-gradient-to-l from-green-800 to-sky-800 text-white rounded-lg px-4 py-1">Qubit Visualizer</h1>
+    <h1 class="text-xl bg-gradient-to-l from-green-800 to-sky-800 text-white rounded-lg px-1 py-1 w-[100px] mx-auto my-4">by Maaz</h1>
+    <div id="qubit-container" class="mx-auto text-center items-center justify-center">
+      <div class="qubit">
+        <div class="label label-0">1</div>
+        <div class="arrow"></div>
+        <div class="label label-1">0</div>
+      </div>
+    </div>
+    <div id="controls" class="flex flex-col gap-8">
+      <button id="apply-not" class="px-4 py-2 bg-green-400 text-black rounded-lg shadow-xl opacity-50 hover:opacity-75 active:opacity-100">Apply NOT Gate</button>
+      <button id="apply-hadamard" class="px-4 py-2 bg-green-400 text-black rounded-lg shadow-xl opacity-50 hover:opacity-75 active:opacity-100">Apply Hadamard Gate</button>
+    </div>
+    <div id="output" class="bg-purple-800 text-xl p-4 rounded-xl text-white m-8">State: |0⟩</div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
