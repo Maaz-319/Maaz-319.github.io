@@ -7,17 +7,16 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="jquery-3.7.1.js"></script>
-    <script src="script.js"></script>
 </head>
 
 <body class="bg-gradient-to-l from-zinc-700 via-gray-800 to-slate-950">
-    <nav class="nav__bar bg-zinc-800 py-2 flex flex-row justify-between hidden lg:flex lg:py-4 w-full">
+    <nav class="nav__bar bg-zinc-800 py-2 flex flex-row justify-between hidden lg:flex lg:py-4 w-full h-full">
         <div class="main__header ml-6 px-1">
-            <h1 class="text-yellow-400 font-bold text-4xl">GPA Calculator</h1>
+            <h1 class="text-yellow-400 font-bold text-2xl lg:text-4xl">GPA Calculator</h1>
         </div>
 
         <div class="inPage__links mr-6">
-            <ul class="flex flex-row text-3xl justify-between gap-8 mt-1 text-yellow-400">
+            <ul class="flex flex-row text-xl lg:text-3xl justify-between gap-4 lg:gap-8 mt-1 text-yellow-400">
                 <li class="inline-block"><a
                         class="fa fa-linkedin navbar__links__list__item border-amber-500 active:opacity-50"
                         href="https://www.linkedin.com/in/maazbinasif" target="_blank"></a>
@@ -68,66 +67,76 @@
         </div>
     </nav>
 
-    <div class="container mx-auto p-4 my-[80px] px-24">
-        <div class="input_fields bg-gray-800 rounded-lg p-4 text-white text-center text-xl py-6">
-            <input type="text" name="course_name" id="course_name" placeholder="course_name or leave empty"
-                class="bg-gray-700 p-2 rounded-lg text-white text-center text-xl my-2 w-full focus:outline-none">
-            <input type="number" name="credit_hours" id="credit_hours" placeholder="Credit_hours"
-                class="bg-gray-700 p-2 rounded-lg text-white text-center text-xl my-2 w-full focus:outline-none"
-                required>
-            <select name="grade" id="grade"
-                class="bg-gray-700 p-2 rounded-lg text-white text-center text-xl my-2 w-full focus:outline-none"
-                required>
-                <option value="4.0">A+ (4.0) (85-100%)</option>
-                <option value="3.7">A- (3.7) (80-84%)</option>
-                <option value="3.3">B+ (3.3) (75-79%)</option>
-                <option value="3.0">B  (3.0) (70-74%)</option>
-                <option value="2.7">B- (2.7) (65-69%)</option>
-                <option value="2.3">C+ (2.3) (61-64%)</option>
-                <option value="2.3">C  (2.3) (58-60%)</option>
-                <option value="1.7">C- (1.7) (55-57%)</option>
-                <option value="1.0">D  (1.0) (50-54%)</option>
-                <option value="0.0">F  (0.0) (0-49%)</option>
-            </select>
+    <div class="h-full w-full p-4">
 
-            <button class="bg-yellow-400 p-2 rounded-lg text-black text-center text-xl my-2 w-full focus:outline-none"
-                onclick="addCourse()">Add Course</button>
+        <h1 class="text-center text-2xl text-yellow-400 my-12 opacity-75">
+            *Add all the courses and then click on calculate GPA to get your GPA
+        </h1>
+        
+        <div>
+            <div
+                class="input_fields bg-gray-800 rounded-lg p-4 text-white text-center text-sm py-4 flex flex-col justify-between gap-3 my-24 block">
+                <input type="text" name="course_name" id="course_name" placeholder="course_name or leave empty"
+                    class="bg-gray-700 p-2 rounded-lg text-white text-center text-5xl my-4 w-full focus:outline-none py-4">
+                <input type="number" name="credit_hours" id="credit_hours" placeholder="Credit_hours"
+                    class="bg-gray-700 p-2 rounded-lg text-white text-center text-5xl my-4 w-full focus:outline-none py-4"
+                    required>
+                <select name="grade" id="grade"
+                    class="bg-gray-700 p-2 rounded-lg text-white text-center text-5xl my-4 w-full h-full focus:outline-none py-4"
+                    required>
+                    <option value="4.0">A+ (4.0) (85-100%)</option>
+                    <option value="3.7">A- (3.7) (80-84%)</option>
+                    <option value="3.3">B+ (3.3) (75-79%)</option>
+                    <option value="3.0">B (3.0) (70-74%)</option>
+                    <option value="2.7">B- (2.7) (65-69%)</option>
+                    <option value="2.3">C+ (2.3) (61-64%)</option>
+                    <option value="2.3">C (2.3) (58-60%)</option>
+                    <option value="1.7">C- (1.7) (55-57%)</option>
+                    <option value="1.0">D (1.0) (50-54%)</option>
+                    <option value="0.0">F (0.0) (0-49%)</option>
+                </select>
 
+                <button
+                    class="bg-yellow-400 p-2 rounded-lg text-black text-center text-5xl my-2 w-full focus:outline-none"
+                    onclick="addCourse()">Add Course</button>
+
+            </div>
+
+            <div
+                class="added_courses bg-gray-800 rounded-lg p-4 text-white text-center text-4xl py-4 my-4 mb-[200px] lg:hidden">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th class="px-2 py-1">Course Name</th>
+                            <th class="px-2 py-1">Credit Hours</th>
+                            <th class="px-2 py-1">Grade</th>
+                            <th class="px-2 py-1">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="courses">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="gpa bg-gray-800 rounded-lg p-4 text-white text-center py-4 my-4">
+                <h1 class="text-3xl text-yellow-400">GPA: <span id="gpa">0.0</span></h1>
+            </div>
+
+            <button class="bg-yellow-400 p-2 rounded-lg text-5xl text-black text-center my-2 w-full focus:outline-none"
+                onclick="calculateGPA()">Calculate GPA</button>
         </div>
-
-        <div class="added_courses bg-gray-800 rounded-lg p-4 text-white text-center text-xl py-6 my-4">
-            <table class="w-full">
-                <thead>
-                    <tr>
-                        <th>Course Name</th>
-                        <th>Credit Hours</th>
-                        <th>Grade</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="courses">
-                </tbody>
-            </table>
-        </div>
-
-        <div class="gpa bg-gray-800 rounded-lg p-4 text-white text-center text-xl py-6 my-4">
-            <h1 class="text-4xl text-yellow-400">GPA: <span id="gpa">0.0</span></h1>
-        </div>
-
-        <button class="bg-yellow-400 p-2 rounded-lg text-black text-center text-xl my-2 w-full focus:outline-none"
-            onclick="calculateGPA()">Calculate GPA</button>
-
 
     </div>
 
-    <footer class=" footer bg-black rounded-b-lg p-2 text-white text-center text-xl py-6">
+
+    <footer class=" footer bg-black rounded-b-lg p-2 text-white text-center text-xl py-6 mt-24">
         <p>© 2024 <span class="text-yellow-500">Maaz Bin Asif</span></p>
     </footer>
 
     <script src="navtoggle.js"></script>
     <script src="addcourse.js"></script>
     <script src="deleteCourse.js"></script>
-    <script src="calcgpa.js "></script>
+    <script src="calcgpa.js"></script>
 </body>
 
 </html>
