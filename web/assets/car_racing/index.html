@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Racing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <style>
+        .a {
+            transition: all 0.3s ease-in-out;
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:not(.logo)::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #faad24;
+            transition: width 0.3s ease;
+        }
+
+        a:not(.logo):hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-900">
+    <div class="main__div w-full h-full">
+        <nav class="nav__bar bg-zinc-800 py-2 flex flex-row justify-between hidden lg:flex lg:py-5 w-full">
+            <div class="main__header ml-6 px-1">
+                <h1 class="text-yellow-400 font-bold text-5xl font-[Pacifico]">𝓜</h1>
+            </div>
+
+            <div class="inPage__links mr-6">
+                <ul class="flex flex-row text-2xl justify-between gap-8 mt-1 text-yellow-400">
+                    <li class="inline-block"><a href="#about"
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">About</a>
+                    </li>
+                    <li class="inline-block"><a href="#skills"
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">Skills</a>
+                    </li>
+                    <li class="inline-block"><a href="#contact"
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">Contact</a>
+                    </li>
+                    <li class="inline-block"><a href="#projects"
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">Projects</a>
+                    </li>
+                    <li class="inline-block"><a href="#github"
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">Github</a>
+                    </li>
+                    <li class="inline-block"><a href="#portfolio"
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">Portfolio</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <nav class="nav__bar bg-zinc-800 rounded-t-lg py-4 flex flex-col justify-between block lg:hidden w-full">
+
+            <div class="flex flex-row justify-between text-yellow-400">
+                <button class="navbar__toggle block lg:hidden text-2xl p-2 mx-4 active:opacity-50" id="navbar__toggle"
+                    onclick="navToggle()">
+                    <i class="fa fa-bars text-white"></i>
+                </button>
+
+                <div class="main__header mx-4 px-1 mt-2">
+                    <h1 class="font-bold text-5xl font-[Pacifico]">𝓜</h1>
+                </div>
+            </div>
+
+            <div class="inPage__links mx-4 hidden">
+                <hr class="w-full mx-2 my-4 shadow-[0px_10px_8px_1px_black]">
+                <ul class="flex flex-col text-xl justify-between gap-3 mt-1 text-yellow-400 text-center">
+                    <li class="inline-block"><a href="#about"
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">About</a></li>
+                    <li class="inline-block"><a href="#skills"
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Skills</a></li>
+                    <li class="inline-block"><a href="#contact"
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Contact</a></li>
+                    <li class="inline-block"><a href="#projects"
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Projects</a></li>
+                    <li class="inline-block"><a href="#education"
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Education</a></li>
+                    <li class="inline-block"><a href="#github"
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Github</a></li>
+                    <li class="inline-block"><a href="#portfolio"
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Portfolio</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="main_game__div w-full h-full">
+        <canvas id="game__canvas" width="800" height="604" class="bg-black mx-auto">
+        </canvas>
+    </div>
+
+    <div class="footer bg-zinc-800 rounded-b-lg p-2 text-white text-center text-xl py-6">
+        <p>© 2024 <span class="text-yellow-500">Maaz Bin Asif</span></p>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

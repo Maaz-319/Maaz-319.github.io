@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racing Game</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: url('bg.png') no-repeat center center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="1366" height="768"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Variables
+        let carX = 682, carY = 600, carXChange = 0;
+        let barrierX = 500, barrierY = 10, barrierSpeed = 5;
+        let points = 0, gameOver = false;
+
+        // Load Images
+        const carImg = new Image();
+        const barrierImg = new Image();
+        carImg.src = 'car.png';
+        barrierImg.src = 'barrier.png';
+
+        // Event Listeners
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') carXChange = 10;
+            if (e.key === 'ArrowLeft') carXChange = -10;
+        });
+
+        document.addEventListener('keyup', () => carXChange = 0);
+
+        // Game Loop
+        function gameLoop() {
+            if (!gameOver) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Update positions
+                carX += carXChange;
+                barrierY += barrierSpeed;
+
+                // Reset barrier
+                if (barrierY > canvas.height) {
+                    barrierY = -50;
+                    barrierX = Math.random() * (canvas.width - 50);
+                    points++;
+                }
+
+                // Draw car and barrier
+                ctx.drawImage(carImg, carX, carY, 50, 100);
+                ctx.drawImage(barrierImg, barrierX, barrierY, 50, 50);
+
+                // Collision detection
+                if (isCollision(carX, carY, barrierX, barrierY, 50)) {
+                    gameOver = true;
+                }
+
+                // Show points
+                ctx.fillStyle = 'white';
+                ctx.font = '20px Arial';
+                ctx.fillText(`Points: ${points}`, 10, 20);
+            } else {
+                ctx.fillStyle = 'red';
+                ctx.font = '40px Arial';
+                ctx.fillText('Game Over!', canvas.width / 2 - 100, canvas.height / 2);
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        function isCollision(x1, y1, x2, y2, size) {
+            return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2) < size;
+        }
+
+        gameLoop();
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic CV Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="html2pdf_library.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="pdf_style.css">
+</head>
+
+<body>
+    <h1 class="heading">Create Your CV</h1>
+    <div id="cv-form" class="to_close_later">
+        <form id="user-form">
+
+            <div class="section_name">
+                <label for="name">Name:</label>
+                <input type="text" id="name_input" name="name" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email_input" name="email" required>
+            </div>
+
+            <hr>
+
+            <div class="section">
+                <table>
+                    <tr>
+                        <td><label for="phone" class="fa fa-phone"></label></td>
+                        <td class="inputs"><input type="text" id="phone_input" name="address"
+                                placeholder="+92 ***********" class="inputs" required></td>
+                        <td><label for="linkedin" class="fa fa-linkedin"></label></td>
+                        <td class="inputs"><input type="url" id="linkedin_input" name="linkedin" class="inputs"
+                                placeholder="linkedin.com/in/username"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="github" class="fa fa-github"></label></td>
+                        <td class="inputs"><input type="url" id="github_input" name="github" class="inputs"
+                                placeholder="github.com/username"></td>
+                        <td><label for="portfolio" class="fa fa-globe"></label></td>
+                        <td class="inputs"><input type="url" id="portfolio_input" name="portfolio" class="inputs"
+                                placeholder="portfolio.com"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="twitter" class="fa fa-twitter"></label></td>
+                        <td class="inputs"><input type="url" id="twitter_input" name="twitter" class="inputs"
+                                placeholder="twitter.com/username"></td>
+                        <td><label for="facebook" class="fa fa-facebook"></label></td>
+                        <td class="inputs"><input type="url" id="facebook_input" name="facebook" class="inputs"
+                                placeholder="facebook.com/username"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="instagram" class="fa fa-instagram"></label></td>
+                        <td class="inputs"><input type="url" id="instagram_input" name="instagram" class="inputs"
+                                placeholder="instagram.com/username"></td>
+                    </tr>
+                </table>
+
+                <span class="add-button" onclick="addLinksField()">Save Links</span>
+            </div>
+
+            <hr>
+
+            <div id="skills-section">
+                <h3>Skills</h3>
+                <div class="section">
+                    <p id="skill_error_message" hidden></p>
+                    <input type="text" placeholder="Skill" id="skill_input">
+                </div>
+                <span class="add-button" onclick="addSkillField()">+ Add Skill</span>
+
+                <ul id="skills_display_list"></ul>
+            </div>
+
+            <hr>
+
+            <div id="education-section">
+                <h3>Education</h3>
+                <div class="section">
+                    <p id="education_error_message" hidden></p>
+                    <input id="education_degree_input" type="text" placeholder="Degree(eg: BS, MS)">
+                    <input id="education_institution_input" type="text" placeholder="Institution Name">
+                    <input id="education_year_input" type="text" placeholder="Year(2020-2024)">
+                </div>
+                <span class="add-button" onclick="addEducationField()">+ Add Education</span>
+
+                <ul id="education_display_list"></ul>
+            </div>
+
+            <hr>
+
+            <div id="experience-section">
+                <h3>Work Experience</h3>
+                <div class="section">
+                    <p id="experience_error_message" hidden></p>
+                    <input id="experience_role_input" type="text" placeholder="Role(eg: CEO)">
+                    <input id="experience_company_input" type="text" placeholder="Company Name">
+                    <input style="width: 50px;" id="experience_duration_input" type="number" placeholder="Duration" min="0" value="0">
+                    <select id="experience_duration_type_input">
+                        <option value="months">Months</option>
+                        <option value="years">Years</option>
+                    </select>
+                </div>
+
+                <span class="add-button" onclick="addExperienceField()">+ Add Experience</span>
+
+                <ul id="experience_display_list"></ul>
+            </div>
+
+            <hr>
+
+            <div id="projects-section">
+                <h3>Projects</h3>
+                <div class="section_project">
+                    <p id="project_error_message" hidden></p>
+                    <input type="text" id="project_name_input" placeholder="Project Name" class="inputs_project">
+
+                    <textarea id="project_description_input" placeholder="Project Description"
+                        class="inputs_project"></textarea>
+
+                    <input type="url" id="project_link_input" placeholder="Github Link or Live Site Link"
+                        class="inputs_project">
+                </div>
+                <span class="add-button" onclick="addProjectField()">+ Add Project</span>
+                <ul id="projects_display_list"></ul>
+            </div>
+
+            <button type="button" id="generate-cv" onclick="generateCV()">Generate CV</button>
+        </form>
+    </div>
+
+    <div id="cv-output">
+        <div id="cv-preview"></div>
+        <button id="download-pdf" onclick="downloadPDF()">Download PDF</button>
+    </div>
+
+
+</body>
+
+</html>
