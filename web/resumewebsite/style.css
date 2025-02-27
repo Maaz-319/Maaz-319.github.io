@@ -1,0 +1,94 @@
+.heading__div::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: url('cover.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+
+.heading__div {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+#typewriter::after {
+    content: "|";
+    animation: blink 0.7s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.a {
+    transition: all 0.3s ease-in-out;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+a:not(.logo)::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: #faad24;
+    transition: width 0.3s ease;
+}
+
+.inPage__links>ul>li>a:not(.logo):hover::after {
+    width: 100%;
+}
+
+.content__section__container {
+    transition: all 0.3s ease-in-out;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: 0px 500px;
+}
+
+.content__section__container:hover {
+    transform: scale(1.02);
+}
+
+img {
+    transition: all 0.3s ease-in-out;
+}
+
+img:hover {
+    transform: scale(1.1);
+}
+
+details {
+    border-radius: 0.35rem;
+    margin: 5px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+@keyframes fade-in {
+    from {
+        scale: .9;
+    }
+
+    to {
+        scale: 1;
+        background: hsl(240, 4%, 12%);
+    }
+}

@@ -4,102 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Maaz Bin Asif - Software Developer, Web Developer, AI Enthusiast. I have experience in developing web applications and software applications. I have worked on different projects and have experience in different programming languages. I am a quick learner and always ready to learn something new. I also love to learn and work in AI and Machine Learning.">
     <title>Maaz Bin Asif</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="style.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="jquery-3.7.1.js"></script>
-    <style>
-        .heading__div::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            background-image: url('cover.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 1;
-        }
-
-        .heading__div {
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        #typewriter::after {
-            content: "|";
-            animation: blink 0.7s steps(2, start) infinite;
-        }
-
-        @keyframes blink {
-            from {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-            }
-        }
-
-        .a {
-            transition: all 0.3s ease-in-out;
-        }
-
-        a {
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        a:not(.logo)::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: #faad24;
-            transition: width 0.3s ease;
-        }
-
-        a:not(.logo):hover::after {
-            width: 100%;
-        }
-
-        .content__section__container {
-            transition: all 0.3s ease-in-out;
-        }
-
-        .content__section__container:hover {
-            transform: scale(1.02);
-        }
-
-        img {
-            transition: all 0.3s ease-in-out;
-        }
-
-        img:hover {
-            transform: scale(1.1);
-        }
-    </style>
     <!-- <script src="jquery-3.7.1.js"></script> -->
     <!-- <script src="script.js"></script> -->
     <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 
-<body>
+<body class="bg-zinc-800">
     <div class="main__div w-full h-full">
-        <nav class="nav__bar bg-zinc-800 py-2 flex flex-row justify-between hidden lg:flex lg:py-5 w-full">
+        <nav class="nav__bar bg-zinc-800 py-2 flex flex-row justify-between hidden lg:flex lg:py-3 w-full">
             <div class="main__header ml-6 px-1">
-                <h1 class="text-yellow-400 font-bold text-5xl font-[Pacifico]">𝓜</h1>
+                <h1 class="text-yellow-400 font-bold text-4xl font-[Pacifico]">𝓜</h1>
             </div>
 
             <div class="inPage__links mr-6">
-                <ul class="flex flex-row text-2xl justify-between gap-8 mt-1 text-yellow-400">
+                <ul class="flex flex-row text-xl justify-between gap-8 mt-1 text-yellow-400">
                     <li class="inline-block"><a href="#about"
                             class="navbar__links__list__item border-amber-500 active:opacity-50">About</a>
                     </li>
@@ -178,27 +106,32 @@
             </div>
         </div>
 
+
         <div class="content__container p-2 bg-zinc-800 w-full h-full lg:px-8 px-2">
             <a id="about"></a>
             <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 lg:py-12 py-4">
-                <div class="header text-center text-yellow-500 font-bold lg:text-5xl text-4xl p-2">
-                    <span class="font-bold">About Me</span>
-                </div>
-                <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
-                <div class="content mt-6 lg:px-12 px-3">
-                    <p class="text-white lg:text-2xl text-xl p-2 lg:text-left text-justify font-[inter] leading-1">
-                        Hi 👋, I am Maaz, A Young Passionate <span class="text-yellow-500">Software Developer</span> -
-                        <span class="text-yellow-500">Web Developer</span> and <span class="text-yellow-500">AI
-                            Enthusiast</span>. I have experience in developing
-                        web applications and software applications. I have worked on different projects and have
-                        experience in different programming languages. I am a quick learner and always ready to learn
-                        something new. I also love to learn and work in <span class="text-yellow-500">AI</span>
-                        and <span class="text-yellow-500">Machine Learning</span>.
-                    </p>
-                    <p class="mx-auto text-center mt-3"><span
-                            class="text-yellow-500 hover:opacity-75 active:opacity-50 mx-auto text-xl"><a
-                                href="https://www.maaz.me/resume.pdf" target="_blank">Get PDF Resume</a></span></p>
-                </div>
+                <article class="the_animaiton_stater">
+                    <div class="header text-center text-yellow-500 font-bold lg:text-5xl text-4xl p-2">
+                        <span class="font-bold">About Me</span>
+                    </div>
+                    <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
+                    <div class="content mt-6 lg:px-12 px-3">
+                        <p class="text-white lg:text-2xl text-xl p-2 lg:text-left text-justify font-[inter] leading-1">
+                            Hi 👋, I am Maaz, A Young Passionate <span class="text-yellow-500">Software Developer</span>
+                            -
+                            <span class="text-yellow-500">Web Developer</span> and <span class="text-yellow-500">AI
+                                Enthusiast</span>. I have experience in developing
+                            web applications and software applications. I have worked on different projects and have
+                            experience in different programming languages. I am a quick learner and always ready to
+                            learn
+                            something new. I also love to learn and work in <span class="text-yellow-500">AI</span>
+                            and <span class="text-yellow-500">Machine Learning</span>.
+                        </p>
+                        <p class="mx-auto text-center mt-3"><span
+                                class="text-yellow-500 hover:opacity-75 active:opacity-50 mx-auto text-xl"><a
+                                    href="https://www.maaz.me/resume.pdf" target="_blank">Get PDF Resume</a></span></p>
+                    </div>
+                </article>
             </div>
             <!-- ================================================================================================== -->
             <a id="skills"></a>
@@ -210,15 +143,16 @@
                 <div class="content mt-6 px-12">
                     <ul
                         class="skills__list lg:flex lg:flex-row grid grid-cols-2 gap-4 justify-center items-center lg:ml-0 ml-8">
-                        <li><img src="languages/python.svg" alt="Python" class="w-[5rem]" title="Python"></li>
-                        <li><img src="languages/c++.svg" alt="C++" class="w-[5rem]" title="C++"></li>
-                        <li><img src="languages/c.svg" alt="C Language" class="w-[5rem]" title="C Language"></li>
-                        <li><img src="languages/html.svg" alt="HTML" class="w-[5rem]" title="HTML 5"></li>
-                        <li><img src="languages/js.svg" alt="JavaScript" class="w-[5rem]" title="JavaScript"></li>
-                        <li class="fa fa-css3 font-bold text-white text-6xl lg:mt-3" title="CSS 3"></li>
-                        <li><img src="languages/kotlin.svg" alt="Kotlin - Android" class="w-[5rem]"
+                        <li><img src="languages/python.svg" alt="Python" class="lg:w-[5rem] w-[4rem]" title="Python"></li>
+                        <li><img src="languages/c++.svg" alt="C++" class="lg:w-[5rem] w-[4rem]" title="C++"></li>
+                        <li><img src="languages/c.svg" alt="C Language" class="lg:w-[5rem] w-[4rem]" title="C Language"></li>
+                        <li><img src="languages/html.svg" alt="HTML" class="lg:w-[5rem] w-[4rem]" title="HTML 5"></li>
+                        <li><img src="languages/js.svg" alt="JavaScript" class="lg:w-[5rem] w-[4rem]" title="JavaScript"></li>
+                        <!-- <li class="fa fa-css3 font-bold text-white lg:text-6xl lg:mt-3 text-5xl" title="CSS 3"></li> -->
+                        <li><img src="languages/css3.svg" alt="CSS" class="lg:w-[5rem] w-[4rem]" title="CSS"></li>
+                        <li><img src="languages/kotlin.svg" alt="Kotlin - Android" class="lg:w-[5rem] w-[4rem]"
                                 title="Kotlin - Android"></li>
-                        <li><img src="tools&frameworks/jquery.svg" alt="JQuery" class="w-[5rem] bg-sky-200 rounded-full"
+                        <li><img src="tools&frameworks/jquery.svg" alt="JQuery" class="lg:w-[5rem] w-[4rem] bg-sky-200 rounded-full"
                                 title="JQuery - Javascript"></li>
                     </ul>
                 </div>
@@ -232,19 +166,19 @@
                 <div class="content mt-6 px-12">
                     <ul
                         class="skills__list lg:flex lg:flex-row grid grid-cols-2 gap-4 justify-center items-center lg:ml-0 ml-8">
-                        <li><img src="tools&frameworks/pygame.svg" alt="Pygame - Python" class="w-[10rem] mt-2"
+                        <li><img src="tools&frameworks/pygame.svg" alt="Pygame - Python" class="lg:w-[10rem] w-[9rem] mt-2"
                                 title="Pygame - 2D Games in Python"></li>
                         <li><img src="tools&frameworks/pandas.svg" alt="Pandas" class="w-[5rem]"
                                 title="Pandas - Python"></li>
                         <!-- <li><img src="tools&frameworks/numpy.svg" alt="Numpy" class="w-[5rem]" title="Numpy - Python"></li> -->
-                        <li><img src="tools&frameworks/tkinter.svg" alt="Tkinter - Python" class="w-[5rem] bg-white"
+                        <li><img src="tools&frameworks/tkinter.svg" alt="Tkinter - Python" class="lg:w-[5rem] w-[4rem] bg-white"
                                 title="TKinter - GUI Apps in Python"></li>
                         <li><img src="tools&frameworks/tailwind.svg" alt="Tailwind" class="w-[5rem]"
                                 title="Tailwind CSS"></li>
-                        <li><img src="tools&frameworks/androidstudio.svg" alt="Android Studio" class="w-[5rem]"
+                        <li><img src="tools&frameworks/androidstudio.svg" alt="Android Studio" class="lg:w-[5rem] w-[4rem]"
                                 title="Android Studio"></li>
-                        <li><img src="tools&frameworks/pycharm.svg" alt="Pycharm" class="w-[5rem]" title="PyCharm"></li>
-                        <li><img src="tools&frameworks/github.svg" alt="Github" class="w-[5rem]" title="Github"></li>
+                        <li><img src="tools&frameworks/pycharm.svg" alt="Pycharm" class="lg:w-[5rem] w-[4rem]" title="PyCharm"></li>
+                        <li><img src="tools&frameworks/github.svg" alt="Github" class="lg:w-[5rem] w-[4rem]" title="Github"></li>
                     </ul>
                 </div>
             </div>
@@ -525,7 +459,7 @@
             <!-- ================================================================================================== -->
         </div>
         <div class="footer bg-black rounded-b-lg p-2 text-white text-center text-xl py-6">
-            <p>© 2024 <span class="text-yellow-500">Maaz Bin Asif</span></p>
+            <p>© 2025 <span class="text-yellow-500">Maaz Bin Asif</span></p>
         </div>
     </div>
 
