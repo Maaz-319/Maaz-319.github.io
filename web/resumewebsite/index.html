@@ -11,22 +11,6 @@
     <!-- <link rel="stylesheet" href="style.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="jquery-3.7.1.js"></script>
-    <script src="script.js"></script>
-    <script>
-        $(function () {
-            $('a[href*="#"]').on('click', function (e) {
-                e.preventDefault();
-
-                $('html, body').animate({
-                    scrollTop: $($(this).attr('href')).offset().top
-                }, 600, 'linear');
-            });
-        });
-
-        function navToggle() {
-            $('.inPage__links').slideToggle();
-        }
-    </script>
     <style>
         .heading__div::before {
             content: '';
@@ -39,28 +23,68 @@
             background-image: url('cover.jpg');
             background-size: cover;
             background-position: center;
-            filter: blur(1px);
             opacity: 1;
         }
 
         .heading__div {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
         }
 
         #typewriter::after {
-        content: "|";
-        animation: blink 0.7s steps(2, start) infinite;
-    }
-
-    @keyframes blink {
-        from {
-            opacity: 1;
+            content: "|";
+            animation: blink 0.7s steps(2, start) infinite;
         }
-        to {
-            opacity: 0;
-        }
-    }
 
+        @keyframes blink {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        .a {
+            transition: all 0.3s ease-in-out;
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:not(.logo)::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #faad24;
+            transition: width 0.3s ease;
+        }
+
+        a:not(.logo):hover::after {
+            width: 100%;
+        }
+
+        .content__section__container {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .content__section__container:hover {
+            transform: scale(1.02);
+        }
+
+        img {
+            transition: all 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
     </style>
     <!-- <script src="jquery-3.7.1.js"></script> -->
     <!-- <script src="script.js"></script> -->
@@ -69,59 +93,65 @@
 
 <body>
     <div class="main__div w-full h-full">
-        <nav class="nav__bar bg-black rounded-t-lg py-2 flex flex-row justify-between hidden lg:flex">
-            <div class="main__header mx-4 border-2 px-1">
-                <h1 class="text-white font-bold text-3xl font-[Pacifico]">Maaz</h1>
+        <nav class="nav__bar bg-zinc-800 py-2 flex flex-row justify-between hidden lg:flex lg:py-5 w-full">
+            <div class="main__header ml-6 px-1">
+                <h1 class="text-yellow-400 font-bold text-5xl font-[Pacifico]">𝓜</h1>
             </div>
 
-            <div class="inPage__links mx-4">
-                <ul class="flex flex-row text-xl justify-between gap-8 mt-1 text-sky-200">
+            <div class="inPage__links mr-6">
+                <ul class="flex flex-row text-2xl justify-between gap-8 mt-1 text-yellow-400">
                     <li class="inline-block"><a href="#about"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">About</a></li>
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">About</a>
+                    </li>
                     <li class="inline-block"><a href="#skills"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">Skills</a></li>
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">Skills</a>
+                    </li>
                     <li class="inline-block"><a href="#contact"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">Contact</a></li>
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">Contact</a>
+                    </li>
                     <li class="inline-block"><a href="#projects"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">Projects</a></li>
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">Projects</a>
+                    </li>
                     <li class="inline-block"><a href="#github"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">Github</a></li>
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">Github</a>
+                    </li>
                     <li class="inline-block"><a href="#portfolio"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">Portfolio</a></li>
+                            class="navbar__links__list__item border-amber-500 active:opacity-50">Portfolio</a>
+                    </li>
                 </ul>
             </div>
         </nav>
 
-        <nav class="nav__bar bg-black rounded-t-lg py-2 flex flex-col justify-between block lg:hidden">
+        <nav class="nav__bar bg-zinc-800 rounded-t-lg py-4 flex flex-col justify-between block lg:hidden w-full">
 
-            <div class="flex flex-row justify-between">
-                <button class="navbar__toggle block lg:hidden text-white text-2xl p-2 mx-4 active:opacity-50"
-                    id="navbar__toggle" onclick="navToggle()">
+            <div class="flex flex-row justify-between text-yellow-400">
+                <button class="navbar__toggle block lg:hidden text-2xl p-2 mx-4 active:opacity-50" id="navbar__toggle"
+                    onclick="navToggle()">
                     <i class="fa fa-bars text-white"></i>
                 </button>
 
                 <div class="main__header mx-4 px-1 mt-2">
-                    <h1 class="text-white font-bold text-3xl font-[Pacifico]">Maaz</h1>
+                    <h1 class="font-bold text-5xl font-[Pacifico]">𝓜</h1>
                 </div>
             </div>
 
             <div class="inPage__links mx-4 hidden">
                 <hr class="w-full mx-2 my-4 shadow-[0px_10px_8px_1px_black]">
-                <ul class="flex flex-col text-xl justify-between gap-3 mt-1 text-sky-200 text-center">
+                <ul class="flex flex-col text-xl justify-between gap-3 mt-1 text-yellow-400 text-center">
                     <li class="inline-block"><a href="#about"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">About</a></li>
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">About</a></li>
                     <li class="inline-block"><a href="#skills"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">Skills</a></li>
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Skills</a></li>
                     <li class="inline-block"><a href="#contact"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">Contact</a></li>
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Contact</a></li>
                     <li class="inline-block"><a href="#projects"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">Projects</a></li>
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Projects</a></li>
                     <li class="inline-block"><a href="#education"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">Education</a></li>
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Education</a></li>
                     <li class="inline-block"><a href="#github"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">Github</a></li>
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Github</a></li>
                     <li class="inline-block"><a href="#portfolio"
-                            class="hover:border-b-2 border-sky-300 active:opacity-50">Portfolio</a></li>
+                            class="hover:border-b-2 border-amber-500 active:opacity-50">Portfolio</a></li>
                 </ul>
             </div>
         </nav>
@@ -137,7 +167,9 @@
                     <hr>
 
                     <div class="professionHead__div mx-auto text-center rounded-xl p-1">
-                        <p id="typewriter" class="professionHead__text lg:text-3xl text-2xl text-white font-bold font-[roboto]">Software
+                        <p id="typewriter"
+                            class="professionHead__text lg:text-3xl text-2xl text-white font-bold font-[roboto]">
+                            Software
                             Developer</p>
                     </div>
                 </div>
@@ -146,37 +178,38 @@
             </div>
         </div>
 
-        <div class="content__container p-2 bg-gradient-to-tl from-slate-900 to-blue-950 w-full h-full lg:px-8 px-2">
+        <div class="content__container p-2 bg-zinc-800 w-full h-full lg:px-8 px-2">
             <a id="about"></a>
             <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 lg:py-12 py-4">
-                <div class="header text-center text-white font-bold lg:text-4xl text-3xl p-2">
+                <div class="header text-center text-yellow-500 font-bold lg:text-5xl text-4xl p-2">
                     <span class="font-bold">About Me</span>
                 </div>
                 <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
                 <div class="content mt-6 lg:px-12 px-3">
-                    <p class="text-sky-200 lg:text-2xl text-xl p-2 lg:text-left text-justify font-[inter] leading-1">
-                        Hi 👋, I am Maaz, A Young Passionate <span class="text-green-500">Software Developer</span> -
-                        <span class="text-green-500">Web Developer</span> and <span class="text-green-500">AI
+                    <p class="text-white lg:text-2xl text-xl p-2 lg:text-left text-justify font-[inter] leading-1">
+                        Hi 👋, I am Maaz, A Young Passionate <span class="text-yellow-500">Software Developer</span> -
+                        <span class="text-yellow-500">Web Developer</span> and <span class="text-yellow-500">AI
                             Enthusiast</span>. I have experience in developing
                         web applications and software applications. I have worked on different projects and have
                         experience in different programming languages. I am a quick learner and always ready to learn
-                        something new. I also love to learn and work in <span class="text-green-500">AI</span>
-                        and <span class="text-green-500">Machine Learning</span>.
+                        something new. I also love to learn and work in <span class="text-yellow-500">AI</span>
+                        and <span class="text-yellow-500">Machine Learning</span>.
                     </p>
                     <p class="mx-auto text-center mt-3"><span
-                            class="text-green-500 underline hover:opacity-75 active:opacity-50 mx-auto text-xl"><a
+                            class="text-yellow-500 hover:opacity-75 active:opacity-50 mx-auto text-xl"><a
                                 href="https://www.maaz.me/resume.pdf" target="_blank">Get PDF Resume</a></span></p>
                 </div>
             </div>
             <!-- ================================================================================================== -->
             <a id="skills"></a>
             <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 lg:py-12 py-4">
-                <div class="header text-center text-white font-bold lg:text-4xl text-3xl p-2">
+                <div class="header text-center text-yellow-500 font-bold lg:text-5xl text-4xl p-2">
                     <span class="font-bold">Skills</span>
                 </div>
                 <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
                 <div class="content mt-6 px-12">
-                    <ul class="skills__list lg:flex lg:flex-row grid grid-cols-2 gap-4 justify-center items-center">
+                    <ul
+                        class="skills__list lg:flex lg:flex-row grid grid-cols-2 gap-4 justify-center items-center lg:ml-0 ml-8">
                         <li><img src="languages/python.svg" alt="Python" class="w-[5rem]" title="Python"></li>
                         <li><img src="languages/c++.svg" alt="C++" class="w-[5rem]" title="C++"></li>
                         <li><img src="languages/c.svg" alt="C Language" class="w-[5rem]" title="C Language"></li>
@@ -192,12 +225,13 @@
             </div>
             <!-- ================================================================================================== -->
             <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 lg:py-12 py-4">
-                <div class="header text-center text-white font-bold lg:text-4xl text-3xl p-2">
+                <div class="header text-center text-yellow-500 font-bold lg:text-5xl text-4xl p-2">
                     <span class="font-bold">Tools and Frameworks</span>
                 </div>
                 <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
                 <div class="content mt-6 px-12">
-                    <ul class="skills__list lg:flex lg:flex-row grid grid-cols-2 gap-4 justify-center items-center">
+                    <ul
+                        class="skills__list lg:flex lg:flex-row grid grid-cols-2 gap-4 justify-center items-center lg:ml-0 ml-8">
                         <li><img src="tools&frameworks/pygame.svg" alt="Pygame - Python" class="w-[10rem] mt-2"
                                 title="Pygame - 2D Games in Python"></li>
                         <li><img src="tools&frameworks/pandas.svg" alt="Pandas" class="w-[5rem]"
@@ -217,17 +251,18 @@
             <!-- ================================================================================================== -->
             <a id="education"></a>
             <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 lg:py-12 py-4">
-                <div class="header text-center text-white font-bold lg:text-4xl text-3xl p-2">
+                <div class="header text-center text-yellow-500 font-bold lg:text-5xl text-4xl p-2">
                     <span class="font-bold">Education</span>
                 </div>
                 <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
                 <div class="content mt-6 lg:pl-12 pl-4">
                     <ul
-                        class="skills__list flex flex-col gap-4 justify-center list-disc text-sky-200 lg:text-2xl text-xl p-2 text-left">
-                        <li>Bachelors in Computer Science - <span class="text-green-500">2024-28</span>* - University of
+                        class="skills__list flex flex-col gap-4 justify-center list-disc text-white lg:text-2xl text-xl p-2 text-left lg:ml-0 ml-2">
+                        <li>Bachelors in Computer Science - <span class="text-yellow-500">2024-28</span>* - University
+                            of
                             the Punjab, Lahore.</li>
                         <hr>
-                        <li>Intermediate in Computer Science - <span class="text-green-500">2022-24</span> - Crescent
+                        <li>Intermediate in Computer Science - <span class="text-yellow-500">2022-24</span> - Crescent
                             Model Higher Secondary School, Lahore.
                         </li>
 
@@ -237,19 +272,19 @@
             <!-- ================================================================================================== -->
             <a id="projects"></a>
             <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 lg:py-12 py-4">
-                <div class="header text-center text-white font-bold lg:text-4xl text-3xl p-2">
+                <div class="header text-center text-yellow-500 font-bold lg:text-5xl text-4xl p-2">
                     <span class="font-bold">Projects</span>
                 </div>
                 <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
                 <div class="content mt-6 lg:px-12 px-3">
-                    <div class="python__projects__container text-sky-200 text-xl p-1">
-                        <h1 class="text-2xl text-green-500 underline font-mono my-4">Python Projects</h1>
+                    <div class="python__projects__container text-white text-xl p-1">
+                        <h1 class="text-2xl text-yellow-500 font-mono my-4">Python Projects</h1>
                         <div class="projects__container ml-3">
                             <details class="cursor-pointer">
 
                                 <summary class="active:opacity-50">Point of Sale System</summary>
                                 <div class="text-center ml-2">
-                                    <p>⸺ POS using TKinter and OOPS</p>
+                                    <p class="text-gray-400 text-sm">⸺ POS using TKinter and OOPS</p>
                                     <iframe class="mx-auto my-4 rounded-xl w-full h-96 lg:h-[600px]"
                                         src="https://drive.google.com/file/d/1xuRiCs1ytBF1gjOfgYDgkjLyP-GTCiEC/preview"
                                         allow="autoplay"></iframe>
@@ -267,7 +302,7 @@
                                 <summary class="active:opacity-50">Library Management System</summary>
 
                                 <div class="text-center">
-                                    <p>⸺ LMS using TKinter and OOPS</p>
+                                    <p class="text-gray-400 text-sm">⸺ LMS using TKinter and OOPS</p>
                                     <iframe class="mx-auto my-4 rounded-xl w-full h-96 lg:h-[600px]"
                                         src="https://drive.google.com/file/d/19XIcK7t9twrRtJahIZ6pGlT0z2ry_zsy/preview"
                                         allow="autoplay"></iframe>
@@ -285,7 +320,7 @@
                                 <summary class="active:opacity-50">Audio Player</summary>
 
                                 <div class="text-center">
-                                    <p>⸺ Audio Player using TKinter and OOPS</p>
+                                    <p class="text-gray-400 text-sm">⸺ Audio Player using TKinter and OOPS</p>
                                     <iframe class="mx-auto my-4 rounded-xl w-full h-96 lg:h-[600px]"
                                         src="https://drive.google.com/file/d/1gw-Z2faal04dvgUNjLzTrMdzdk6XMPFD/preview"
                                         allow="autoplay"></iframe>
@@ -306,24 +341,24 @@
                     <div class="text-center">
                         <p class="text-sky-300 lg:ml-8 mt-2 py-1">Want to see my All Python
                             Projects? Check out My
-                            <a href="https://www.github.com/maaz-319/python"
-                                class="text-green-500 underline active:opacity-50" target="_blank">Repo</a> <span
-                                class="font-bold text-lg">OR</span> <a
+                            <a href="https://www.github.com/maaz-319/python" class="text-yellow-500 active:opacity-50"
+                                target="_blank">Repo</a> <span class="font-bold text-lg">OR</span> <a
                                 href="https://maaz-319.github.io/python/index.html"
-                                class="text-green-500 underline active:opacity-50" target="_blank">Video Previews</a>
+                                class="text-yellow-500 active:opacity-50" target="_blank">Video Previews</a>
                         </p>
                     </div>
                     <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
 
                     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <div class="web__projects__container text-sky-200 text-xl p-1">
-                        <h1 class="text-2xl text-green-500 underline font-mono my-4">Web Projects</h1>
+                    <div class="web__projects__container text-white text-xl p-1">
+                        <h1 class="text-2xl text-yellow-500 font-mono my-4">Web Projects</h1>
                         <div class="projects__container ml-3">
                             <details class="cursor-pointer">
 
                                 <summary class="active:opacity-50">Portfolio Website</summary>
                                 <div class="text-center lg:ml-2">
-                                    <p class="my-4">⸺ Using HTML, Jquery, Tailwind. All my Projects are available here.
+                                    <p class="my-4 text-xm text-gray-400">⸺ Using HTML, Jquery, Tailwind. All my
+                                        Projects are available here.
                                     </p>
                                     <a href="https://github.com/Maaz-319/Maaz-319.github.io" target="_blank">
                                         <button
@@ -342,7 +377,8 @@
 
                                 <summary class="active:opacity-50">Movie Info</summary>
                                 <div class="text-center lg:ml-2">
-                                    <p class="my-4">⸺ Using HTML, Jquery, Tailwind. Get Latest info about Movies</p>
+                                    <p class="my-4 text-xm text-gray-400">⸺ Using HTML, Jquery, Tailwind. Get Latest
+                                        info about Movies</p>
                                     <a href="https://github.com/Maaz-319/Maaz-319.github.io/tree/main/web/assets/movie-Info"
                                         target="_blank">
                                         <button
@@ -362,7 +398,8 @@
 
                                 <summary class="active:opacity-50">Quiz Game</summary>
                                 <div class="text-center lg:ml-2">
-                                    <p class="my-4">⸺ Using HTML, Jquery, Tailwind. You can select your favourite
+                                    <p class="my-4 text-xm text-gray-400">⸺ Using HTML, Jquery, Tailwind. You can select
+                                        your favourite
                                         Catogory to Play.</p>
                                     <a href="https://github.com/Maaz-319/Maaz-319.github.io/tree/main/web/assets/quizgame"
                                         target="_blank">
@@ -388,9 +425,9 @@
                             Projects?
                             Check out My
                             <a href="https://github.com/Maaz-319/Maaz-319.github.io/tree/main/web/assets"
-                                class="text-green-500 underline active:opacity-50" target="_blank">Repo</a> <span
+                                class="text-yellow-500 active:opacity-50" target="_blank">Repo</a> <span
                                 class="font-bold text-lg">OR</span> <a href="https://maaz-319.github.io/web/index.html"
-                                class="text-green-500 underline active:opacity-50" target="_blank">Visit Live</a>
+                                class="text-yellow-500 active:opacity-50" target="_blank">Visit Live</a>
                         </p>
                     </div>
                     <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
@@ -401,34 +438,34 @@
             <!-- ================================================================================================== -->
             <a id="portfolio"></a>
             <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 lg:py-12 py-4">
-                <div class="header text-center text-white font-bold lg:text-4xl text-3xl p-2">
+                <div class="header text-center text-yellow-500 font-bold lg:text-5xl text-4xl p-2">
                     <span class="font-bold">Portfolio</span>
                 </div>
                 <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
                 <div class="content mt-6 lg:px-12 text-center">
-                    <p class="text-sky-200 text-2xl p-2 text-center font-[calibri] ml-2 lg:ml-0">
+                    <p class="text-white text-2xl p-2 text-center font-[calibri] ml-2 lg:ml-0">
                         All my Projects are available on my Portfolio Website. Click the Globe below to visit. Do check
                         it. 😁
                     </p>
                     <a href="https://maaz-319.github.io"
-                        class="fa fa-globe inline-block lg:ml-0 text-slate-100 text-6xl hover:text-slate-950 mt-4"
+                        class="fa fa-globe inline-block lg:ml-0 text-slate-100 text-6xl hover:text-yellow-500 mt-4"
                         id="github-link" target="_blank"></a>
                 </div>
             </div>
             <!-- ================================================================================================== -->
             <a id="contact"></a>
             <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 lg:py-12 py-4">
-                <div class="header text-center text-white font-bold lg:text-4xl text-3xl p-2">
+                <div class="header text-center text-yellow-500 font-bold lg:text-5xl text-4xl p-2">
                     <span class="font-bold">Contact Me</span>
                 </div>
                 <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
                 <div class="content mt-6 lg:px-12 px-3">
-                    <p class="text-sky-200 text-2xl p-2 text-center">
+                    <p class="text-white text-2xl p-2 text-center">
                         I am always Eager to Connect and Collaborate on Queries and Projects.
                     </p>
                     <ul class="list-none flex flex-row justify-between lg:mx-[140px] mt-5">
                         <li
-                            class="contact__me__link inline-block lg:mx-10 lg:ml-0 text-slate-100 text-3xl lg:text-4xl hover:text-red-700 active:opacity-50">
+                            class="contact__me__link inline-block lg:mx-10 lg:ml-0 text-slate-100 text-3xl lg:text-4xl hover:text-yellow-500 active:opacity-50">
                             <a href="mailto:maazbinaasif@gmail.com" class="fa fa-envelope"></a>
                         </li>
                         <li
@@ -450,16 +487,16 @@
             </div>
             <!-- ================================================================================================== -->
             <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 lg:py-12 py-4">
-                <div class="header text-center text-white font-bold lg:text-4xl text-3xl p-2">
+                <div class="header text-center text-yellow-500 font-bold lg:text-5xl text-4xl p-2">
                     <span class="font-bold">Languages</span>
                 </div>
                 <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
                 <div class="content mt-6 lg:px-12 px-8">
                     <ul
-                        class="skills__list flex flex-col gap-4 justify-center list-disc text-sky-200 lg:text-3xl text-2xl p-2 text-left">
-                        <li>Urdu - <span class="text-green-500">Native</span></li>
+                        class="skills__list flex flex-col gap-4 justify-center list-disc text-white lg:text-3xl text-2xl p-2 text-left">
+                        <li>Urdu - <span class="text-yellow-500">Native</span></li>
                         <hr>
-                        <li>English - <span class="text-green-500">Fluent</span>
+                        <li>English - <span class="text-yellow-500">Fluent</span>
                         </li>
 
                     </ul>
@@ -468,12 +505,12 @@
             <!-- ================================================================================================== -->
             <a id="github"></a>
             <div class="content__section__container mt-6 shadow-[0px_0px_10px_0px_black] p-2 lg:py-12 py-4">
-                <div class="header text-center text-white font-bold lg:text-4xl text-3xl p-2">
+                <div class="header text-center text-yellow-500 font-bold lg:text-5xl text-4xl p-2">
                     <span class="font-bold">Github</span>
                 </div>
                 <hr class="lg:w-[20rem] w-[13rem] mx-auto my-2 shadow-[0px_10px_8px_1px_black]">
                 <div class="content mt-6 lg:px-12 text-center">
-                    <p class="text-sky-200 text-2xl p-2 lg:text-left text-center font-[calibri] ml-2 lg:ml-0">
+                    <p class="text-white text-2xl p-2 lg:text-left text-center font-[calibri] ml-2 lg:ml-0">
                         My GitHub profile showcases a diverse collection of repositories
                         that highlight my work in software development, web developememt, and GUI Apps. These projects
                         reflect my ability to design and implement efficient solutions using modern technologies,
@@ -481,16 +518,18 @@
                         repositories below.
                     </p>
                     <a href="https://www.github.com/maaz-319"
-                        class="fa fa-github inline-block lg:ml-0 text-slate-100 text-6xl hover:text-slate-950 mt-4"
+                        class="fa fa-github inline-block lg:ml-0 text-slate-100 text-6xl hover:text-yellow-500 mt-4"
                         id="github-link" target="_blank"></a>
                 </div>
             </div>
             <!-- ================================================================================================== -->
         </div>
         <div class="footer bg-black rounded-b-lg p-2 text-white text-center text-xl py-6">
-            <p>© 2024 <span class="text-green-500">Maaz Bin Asif</span></p>
+            <p>© 2024 <span class="text-yellow-500">Maaz Bin Asif</span></p>
         </div>
     </div>
+
+    <script src="script.js"></script>
 
 </body>
 

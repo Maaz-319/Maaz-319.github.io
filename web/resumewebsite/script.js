@@ -1,7 +1,7 @@
 $(function () {
     const texts = [
         "Software Developer",
-        "Static Web Developer",
+        "Web Developer",
         "AI Enthusiast",
         "Pygame Developer"
     ];
@@ -32,4 +32,15 @@ $(function () {
     }
 
     typeWriter(); // Start the effect
+    $('a[href*="#"]').on('click', function (e) {
+        e.preventDefault();
+
+        $('html, body').animate({
+            scrollTop: $($(this).attr('href')).offset().top
+        }, 600, 'linear');
+    });
 });
+
+function navToggle() {
+    $('.inPage__links').slideToggle();
+}
