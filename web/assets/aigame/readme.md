@@ -62,4 +62,4 @@ Dynamic Difficulty: A global difficulty variable increases over time to speed up
 - **P** → Pause/Resume the game.  
 - **Enter** → Start the game from the menu.
 
-### Check live [Here](https://maaz-319.github.io/web/aigame/) or [Here](https://portfolio.maaz.me/web/aigame)
+### Check live [Here](https://maaz-319.github.io/web/assets/aigame/) or [Here](https://portfolio.maaz.me/web/assets/aigame)
