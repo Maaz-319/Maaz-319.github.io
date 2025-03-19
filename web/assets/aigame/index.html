@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Space Shooter Game - Ultimate Edition</title>
+  <style>
+    /* Basic reset and full-screen canvas styling */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+    #gameCanvas {
+      display: block;
+      background: #000;
+      width: 100%;
+      height: 100%;
+    }
+    /* UI overlay for state messages with fade-in effect */
+    .ui-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2em;
+      text-shadow: 2px 2px 4px #000;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      text-align: center;
+    }
+    .visible { opacity: 1; }
+    /* Weapon indicator at top-right */
+    .weapon-indicator {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1em;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #fff;
+    }
+    /* HUD for score, health, and combo at top-left */
+    .hud {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 1em;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #fff;
+      line-height: 1.5em;
+    }
+    /* Achievement notification styling */
+    .achievement {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border: 2px solid gold;
+      border-radius: 10px;
+      color: gold;
+      font-size: 1.5em;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+    .achievement.visible { opacity: 1; }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+  <div id="overlay" class="ui-overlay visible">Press 'Enter' to Start</div>
+  <div id="weaponIndicator" class="weapon-indicator">Weapon: 1</div>
+  <div id="hud" class="hud">Score: 0<br>Health: 100<br>Combo: x1</div>
+  <div id="achievementNotification" class="achievement"></div>
+
+  <script>
+    // ------------------ Audio Manager ------------------
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playSound(frequency, duration = 0.1, volume = 0.1) {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.frequency.value = frequency;
+      gain.gain.value = volume;
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+    function playShootSound() { playSound(600, 0.08, 0.1); }
+    function playExplosionSound() { playSound(200, 0.15, 0.15); }
+    function playPowerUpSound() { playSound(800, 0.1, 0.1); }
+    // Simple continuous background tone for demo purposes
+    function startBackgroundMusic() {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.type = 'sine';
+      osc.frequency.value = 220;
+      gain.gain.value = 0.03;
+      osc.start();
+    }
+    startBackgroundMusic();
+
+    // ------------------ Canvas Setup ------------------
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // ------------------ Parallax Starfield Background ------------------
+    // Declare stars before using them in resizeCanvas
+    let stars = [];
+    function initStars() {
+      stars = [];
+      for (let i = 0; i < 100; i++) {
+        stars.push({ 
+          x: Math.random() * canvas.width, 
+          y: Math.random() * canvas.height, 
+          speed: Math.random() * 0.05 + 0.02,
+          radius: Math.random() * 1.5 + 0.5 
+        });
+      }
+    }
+    initStars();
+
+    function updateStars(deltaTime) {
+      stars.forEach(star => {
+        star.y += star.speed * deltaTime;
+        if (star.y > canvas.height) { star.y = 0; star.x = Math.random() * canvas.width; }
+      });
+    }
+    function drawStars() {
+      ctx.fillStyle = 'white';
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    // ------------------ Resize Canvas ------------------
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initStars(); // reinitialize stars for new size
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // ------------------ Global Variables & States ------------------
+    const GameState = { MENU: 'menu', PLAYING: 'playing', PAUSED: 'paused', GAMEOVER: 'gameover' };
+    let currentState = GameState.MENU;
+    let keysDown = {};
+    let difficulty = 1, score = 0, highScore = parseInt(localStorage.getItem('highScore')) || 0;
+    let timeScale = 1; // For slow-motion effect
+    let timeSlowTimer = 0; // Duration for slow-motion power-up
+    let shakeOffset = { x: 0, y: 0 }, shakeTimer = 0;
+    let comboMultiplier = 1, lastKillTime = 0;
+    let achievementsUnlocked = [];
+
+    // ------------------ Achievement Notification ------------------
+    function showAchievement(message) {
+      const notif = document.getElementById('achievementNotification');
+      notif.innerText = message;
+      notif.classList.add('visible');
+      setTimeout(() => { notif.classList.remove('visible'); }, 2000);
+    }
+
+    // ------------------ Particle Explosion System ------------------
+    class Particle {
+      constructor(x, y, color) {
+        this.x = x; this.y = y;
+        this.radius = Math.random() * 3 + 2;
+        this.speed = Math.random() * 0.3 + 0.1;
+        this.angle = Math.random() * Math.PI * 2;
+        this.life = 1000; this.elapsed = 0;
+        this.color = color;
+      }
+      update(deltaTime) {
+        this.elapsed += deltaTime;
+        this.x += Math.cos(this.angle) * this.speed * deltaTime;
+        this.y += Math.sin(this.angle) * this.speed * deltaTime;
+      }
+      draw(ctx) {
+        const opacity = 1 - (this.elapsed / this.life);
+        ctx.fillStyle = `rgba(${this.color}, ${opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      isExpired() { return this.elapsed >= this.life; }
+    }
+    let particles = [];
+    function createExplosion(x, y, color = "255, 165, 0") {
+      for (let i = 0; i < 15; i++) {
+        particles.push(new Particle(x, y, color));
+      }
+      playExplosionSound();
+      if(navigator.vibrate) navigator.vibrate(50);
+      shakeTimer = 300; // Shake effect lasts 300ms
+      shakeOffset.x = (Math.random()-0.5)*10;
+      shakeOffset.y = (Math.random()-0.5)*10;
+    }
+
+    // ------------------ Game Entity Classes ------------------
+    class Player {
+      constructor() {
+        this.x = canvas.width / 2;
+        this.y = canvas.height - 60;
+        this.width = 40; this.height = 40;
+        this.speed = 0.3; this.friction = 0.95;
+        this.velX = 0; this.velY = 0;
+        this.shootCooldown = 0;
+        this.currentWeapon = 1; // 1: Laser, 2: Spread, 3: Charged Blast
+        this.shield = false;
+        this.health = 100;
+      }
+      update(deltaTime) {
+        if (keysDown['ArrowLeft'] || keysDown['a']) this.velX -= this.speed * deltaTime;
+        if (keysDown['ArrowRight'] || keysDown['d']) this.velX += this.speed * deltaTime;
+        if (keysDown['ArrowUp'] || keysDown['w']) this.velY -= this.speed * deltaTime;
+        if (keysDown['ArrowDown'] || keysDown['s']) this.velY += this.speed * deltaTime;
+        this.velX *= this.friction; this.velY *= this.friction;
+        this.x += this.velX * timeScale; this.y += this.velY * timeScale;
+        this.x = Math.max(0, Math.min(canvas.width - this.width, this.x));
+        this.y = Math.max(0, Math.min(canvas.height - this.height, this.y));
+        if (keysDown[' '] && this.shootCooldown <= 0) {
+          this.shoot();
+          this.shootCooldown = this.currentWeapon === 3 ? 800 : 300;
+          playShootSound();
+        }
+        if (this.shootCooldown > 0) this.shootCooldown -= deltaTime;
+      }
+      shoot() {
+        if (this.currentWeapon === 1) {
+          shootProjectile(this.x + this.width / 2, this.y, 0);
+        } else if (this.currentWeapon === 2) {
+          shootProjectile(this.x + this.width / 2, this.y, -15);
+          shootProjectile(this.x + this.width / 2, this.y, 0);
+          shootProjectile(this.x + this.width / 2, this.y, 15);
+        } else if (this.currentWeapon === 3) {
+          shootChargedProjectile(this.x + this.width / 2, this.y);
+        }
+      }
+      draw(ctx) {
+        ctx.fillStyle = this.shield ? 'gold' : 'cyan';
+        ctx.beginPath();
+        ctx.moveTo(this.x + this.width / 2, this.y);
+        ctx.lineTo(this.x, this.y + this.height);
+        ctx.lineTo(this.x + this.width, this.y + this.height);
+        ctx.closePath();
+        ctx.fill();
+        // Draw thruster trail for extra flair
+        ctx.fillStyle = 'rgba(0,255,255,0.5)';
+        ctx.beginPath();
+        ctx.arc(this.x + this.width / 2, this.y + this.height, 5, 0, Math.PI, true);
+        ctx.fill();
+      }
+    }
+    class Projectile {
+      constructor(x, y, angle = 0, isCharged = false) {
+        this.x = x; this.y = y;
+        this.radius = isCharged ? 10 : 5;
+        this.speed = isCharged ? 0.3 : 0.5;
+        this.angle = angle * (Math.PI / 180);
+        this.velX = Math.sin(this.angle) * this.speed;
+        this.velY = -Math.cos(this.angle) * this.speed;
+        this.isCharged = isCharged;
+      }
+      update(deltaTime) {
+        this.x += this.velX * deltaTime * timeScale;
+        this.y += this.velY * deltaTime * timeScale;
+      }
+      draw(ctx) {
+        ctx.fillStyle = this.isCharged ? 'magenta' : 'yellow';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    class Enemy {
+      constructor(x, y) {
+        this.x = x; this.y = y;
+        this.width = 40; this.height = 40;
+        this.speed = 0.2 * difficulty;
+      }
+      update(deltaTime) { this.y += this.speed * deltaTime * timeScale; }
+      draw(ctx) { ctx.fillStyle = 'red'; ctx.fillRect(this.x, this.y, this.width, this.height); }
+    }
+    class AdvancedEnemy {
+      constructor(x, y) {
+        this.x = x; this.y = y;
+        this.width = 40; this.height = 40;
+        this.baseSpeed = 0.25 * difficulty;
+        this.amplitude = 50; this.frequency = 0.005; this.initialX = x;
+      }
+      update(deltaTime) {
+        this.y += this.baseSpeed * deltaTime * timeScale;
+        this.x = this.initialX + Math.sin(this.y * this.frequency) * this.amplitude;
+      }
+      draw(ctx) { ctx.fillStyle = 'orange'; ctx.fillRect(this.x, this.y, this.width, this.height); }
+    }
+    class BossEnemy {
+      constructor(x, y) {
+        this.x = x; this.y = y;
+        this.width = 100; this.height = 100;
+        this.speed = 0.1 * difficulty; this.health = 50;
+      }
+      update(deltaTime) { this.y += this.speed * deltaTime * timeScale; }
+      draw(ctx) {
+        ctx.fillStyle = 'purple';
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.fillStyle = 'green';
+        ctx.fillRect(this.x, this.y - 10, (this.health / 50) * this.width, 5);
+      }
+    }
+    class Meteor {
+      constructor(x, y) {
+        this.x = x; this.y = y;
+        this.size = Math.random() * 30 + 20;
+        this.speed = 0.15 * difficulty;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.01;
+      }
+      update(deltaTime) { this.y += this.speed * deltaTime * timeScale; this.rotation += this.rotationSpeed * deltaTime; }
+      draw(ctx) {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.fillStyle = 'gray';
+        ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+        ctx.restore();
+      }
+    }
+    class GammaRay {
+      constructor(y, duration = 2000) {
+        this.y = y; this.width = canvas.width; this.height = 10; this.duration = duration; this.elapsed = 0;
+      }
+      update(deltaTime) { this.elapsed += deltaTime * timeScale; }
+      draw(ctx) { ctx.fillStyle = 'rgba(100,255,255,0.5)'; ctx.fillRect(0, this.y, this.width, this.height); }
+      isExpired() { return this.elapsed > this.duration; }
+    }
+    class PowerUp {
+      constructor(x, y, type) {
+        this.x = x; this.y = y;
+        this.size = 20;
+        this.type = type; // 'health', 'shield', 'weapon', 'timeSlow', 'drone'
+      }
+      update(deltaTime) { this.y += 0.1 * deltaTime * timeScale; }
+      draw(ctx) {
+        if (this.type === 'health') ctx.fillStyle = 'lime';
+        else if (this.type === 'shield') ctx.fillStyle = 'aqua';
+        else if (this.type === 'weapon') ctx.fillStyle = 'violet';
+        else if (this.type === 'timeSlow') ctx.fillStyle = 'blue';
+        else if (this.type === 'drone') ctx.fillStyle = 'pink';
+        ctx.fillRect(this.x, this.y, this.size, this.size);
+      }
+    }
+    // Drone helper entity
+    class Drone {
+      constructor() { this.x = player.x; this.y = player.y; this.width = 20; this.height = 20; this.shootCooldown = 500; }
+      update(deltaTime) {
+        this.x += (player.x - this.x) * 0.05;
+        this.y += (player.y - this.y) * 0.05;
+        if (this.shootCooldown <= 0) { shootProjectile(this.x + this.width/2, this.y, 0); this.shootCooldown = 500; }
+        this.shootCooldown -= deltaTime;
+      }
+      draw(ctx) { ctx.fillStyle = 'pink'; ctx.fillRect(this.x, this.y, this.width, this.height); }
+    }
+
+    // ------------------ Global Game Variables ------------------
+    let player, projectiles = [], enemies = [], advancedEnemies = [], bossEnemies = [];
+    let meteors = [], gammaRays = [], powerUps = [], drones = [];
+    let enemySpawnTimer = 0, advancedEnemySpawnTimer = 0, bossSpawnTimer = 0;
+    let meteorSpawnTimer = 0, gammaRaySpawnTimer = 0, powerUpSpawnTimer = 0, difficultyTimer = 0;
+
+    // ------------------ Shooting Functions ------------------
+    function shootProjectile(x, y, angle = 0) { projectiles.push(new Projectile(x, y, angle)); }
+    function shootChargedProjectile(x, y) { projectiles.push(new Projectile(x, y, 0, true)); }
+
+    // ------------------ Spawn Functions ------------------
+    function spawnEnemy() { enemies.push(new Enemy(Math.random() * (canvas.width - 40), -40)); }
+    function spawnAdvancedEnemy() { advancedEnemies.push(new AdvancedEnemy(Math.random() * (canvas.width - 40), -40)); }
+    function spawnBossEnemy() { bossEnemies.push(new BossEnemy(Math.random() * (canvas.width - 100), -100)); }
+    function spawnMeteor() { meteors.push(new Meteor(Math.random() * canvas.width, -50)); }
+    function spawnGammaRay() { gammaRays.push(new GammaRay(Math.random() * (canvas.height - 100) + 50)); }
+    function spawnPowerUp() {
+      const types = ['health', 'shield', 'weapon', 'timeSlow', 'drone'];
+      powerUps.push(new PowerUp(Math.random() * (canvas.width - 20), -20, types[Math.floor(Math.random() * types.length)]));
+    }
+
+    // ------------------ Collision Helper ------------------
+    function rectCollision(a, b) {
+      return a.x < b.x + b.width &&
+             a.x + a.width > b.x &&
+             a.y < b.y + b.height &&
+             a.y + a.height > b.y;
+    }
+
+    // ------------------ High Score & Achievements ------------------
+    function updateHighScore() {
+      const storedScore = parseInt(localStorage.getItem('highScore')) || 0;
+      if (score > storedScore) { localStorage.setItem('highScore', score); highScore = score; }
+      else { highScore = storedScore; }
+    }
+    function checkAchievements() {
+      if (score >= 100 && !achievementsUnlocked.includes("Score 100")) {
+        achievementsUnlocked.push("Score 100");
+        showAchievement("Achievement Unlocked: Score 100!");
+      }
+      if (comboMultiplier >= 5 && !achievementsUnlocked.includes("Combo Master")) {
+        achievementsUnlocked.push("Combo Master");
+        showAchievement("Achievement Unlocked: Combo Master!");
+      }
+    }
+
+    // ------------------ Main Game Loop ------------------
+    let lastTime = performance.now();
+    function gameLoop(currentTime) {
+      let deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
+      deltaTime *= timeScale;
+      update(deltaTime);
+      draw();
+      requestAnimationFrame(gameLoop);
+    }
+    function update(deltaTime) {
+      const overlay = document.getElementById('overlay');
+      const weaponIndicator = document.getElementById('weaponIndicator');
+      const hud = document.getElementById('hud');
+
+      updateStars(deltaTime);
+      difficultyTimer += deltaTime;
+      if (difficultyTimer > 5000) { difficulty += 0.1; difficultyTimer = 0; }
+      if (timeSlowTimer > 0) { timeSlowTimer -= deltaTime; if (timeSlowTimer <= 0) timeScale = 1; }
+      if (shakeTimer > 0) { shakeTimer -= deltaTime; } else { shakeOffset.x = 0; shakeOffset.y = 0; }
+
+      if (currentState === GameState.MENU) {
+        overlay.innerText = "Press 'Enter' to Start";
+        overlay.classList.add("visible");
+      } else if (currentState === GameState.PLAYING) {
+        overlay.classList.remove("visible");
+        weaponIndicator.innerText = "Weapon: " + (player ? player.currentWeapon : '');
+        hud.innerHTML = `Score: ${score}<br>Health: ${player ? player.health : 0}<br>Combo: x${comboMultiplier}`;
+        if (player) player.update(deltaTime);
+        for (let i = projectiles.length - 1; i >= 0; i--) {
+          projectiles[i].update(deltaTime);
+          if (projectiles[i].y < 0 || projectiles[i].x < 0 || projectiles[i].x > canvas.width)
+            projectiles.splice(i, 1);
+        }
+        enemySpawnTimer += deltaTime;
+        if (enemySpawnTimer > 1000 / difficulty) { spawnEnemy(); enemySpawnTimer = 0; }
+        advancedEnemySpawnTimer += deltaTime;
+        if (advancedEnemySpawnTimer > 3000 / difficulty) { spawnAdvancedEnemy(); advancedEnemySpawnTimer = 0; }
+        bossSpawnTimer += deltaTime;
+        if (bossSpawnTimer > 20000) { spawnBossEnemy(); bossSpawnTimer = 0; }
+        meteorSpawnTimer += deltaTime;
+        if (meteorSpawnTimer > 1500 / difficulty) { spawnMeteor(); meteorSpawnTimer = 0; }
+        gammaRaySpawnTimer += deltaTime;
+        if (gammaRaySpawnTimer > 5000 / difficulty) { spawnGammaRay(); gammaRaySpawnTimer = 0; }
+        powerUpSpawnTimer += deltaTime;
+        if (powerUpSpawnTimer > 7000) { spawnPowerUp(); powerUpSpawnTimer = 0; }
+        enemies.forEach((enemy, i) => { enemy.update(deltaTime); if (enemy.y > canvas.height) enemies.splice(i, 1); });
+        advancedEnemies.forEach((enemy, i) => { enemy.update(deltaTime); if (enemy.y > canvas.height) advancedEnemies.splice(i, 1); });
+        bossEnemies.forEach((boss, i) => { boss.update(deltaTime); if (boss.y > canvas.height) bossEnemies.splice(i, 1); });
+        meteors.forEach((meteor, i) => { meteor.update(deltaTime); if (meteor.y > canvas.height) meteors.splice(i, 1); });
+        gammaRays.forEach((ray, i) => { ray.update(deltaTime); if (ray.isExpired()) gammaRays.splice(i, 1); });
+        powerUps.forEach((power, i) => { power.update(deltaTime); if (power.y > canvas.height) powerUps.splice(i, 1); });
+        particles.forEach((particle, i) => { particle.update(deltaTime); if (particle.isExpired()) particles.splice(i, 1); });
+        drones.forEach(drone => drone.update(deltaTime));
+        for (let i = projectiles.length - 1; i >= 0; i--) {
+          let proj = projectiles[i];
+          for (let j = enemies.length - 1; j >= 0; j--) {
+            let enemy = enemies[j];
+            if (proj.x > enemy.x && proj.x < enemy.x + enemy.width &&
+                proj.y > enemy.y && proj.y < enemy.y + enemy.height) {
+              projectiles.splice(i, 1);
+              createExplosion(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2);
+              enemies.splice(j, 1);
+              score += 10 * comboMultiplier;
+              comboMultiplier++;
+              lastKillTime = performance.now();
+              break;
+            }
+          }
+          for (let j = advancedEnemies.length - 1; j >= 0; j--) {
+            let enemy = advancedEnemies[j];
+            if (proj.x > enemy.x && proj.x < enemy.x + enemy.width &&
+                proj.y > enemy.y && proj.y < enemy.y + enemy.height) {
+              projectiles.splice(i, 1);
+              createExplosion(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, "255,140,0");
+              advancedEnemies.splice(j, 1);
+              score += 15 * comboMultiplier;
+              comboMultiplier++;
+              lastKillTime = performance.now();
+              break;
+            }
+          }
+          for (let j = bossEnemies.length - 1; j >= 0; j--) {
+            let boss = bossEnemies[j];
+            if (proj.x > boss.x && proj.x < boss.x + boss.width &&
+                proj.y > boss.y && proj.y < boss.y + boss.height) {
+              projectiles.splice(i, 1);
+              boss.health -= proj.isCharged ? 10 : 5;
+              if (boss.health <= 0) {
+                createExplosion(boss.x + boss.width / 2, boss.y + boss.height / 2, "128,0,128");
+                bossEnemies.splice(j, 1);
+                score += 50 * comboMultiplier;
+                comboMultiplier++;
+                lastKillTime = performance.now();
+              }
+              break;
+            }
+          }
+        }
+        enemies.forEach(enemy => { if (rectCollision(player, enemy)) currentState = GameState.GAMEOVER; });
+        advancedEnemies.forEach(enemy => { if (rectCollision(player, enemy)) currentState = GameState.GAMEOVER; });
+        bossEnemies.forEach(boss => { if (rectCollision(player, boss)) currentState = GameState.GAMEOVER; });
+        meteors.forEach(meteor => {
+          let meteorRect = { x: meteor.x - meteor.size / 2, y: meteor.y - meteor.size / 2, width: meteor.size, height: meteor.size };
+          if (rectCollision(player, meteorRect)) currentState = GameState.GAMEOVER;
+        });
+        gammaRays.forEach(ray => {
+          if (player.y + player.height / 2 > ray.y && player.y + player.height / 2 < ray.y + ray.height)
+            currentState = GameState.GAMEOVER;
+        });
+        powerUps.forEach((power, i) => {
+          let powerRect = { x: power.x, y: power.y, width: power.size, height: power.size };
+          if (rectCollision(player, powerRect)) {
+            if (power.type === 'health') { player.health = Math.min(100, player.health + 20); }
+            else if (power.type === 'shield') { player.shield = true; setTimeout(() => { player.shield = false; }, 5000); }
+            else if (power.type === 'weapon') { player.currentWeapon = (player.currentWeapon % 3) + 1; }
+            else if (power.type === 'timeSlow') { timeScale = 0.5; timeSlowTimer = 3000; }
+            else if (power.type === 'drone') { drones.push(new Drone()); }
+            powerUps.splice(i, 1);
+            playPowerUpSound();
+          }
+        });
+        drones.forEach(drone => {
+          enemies.forEach((enemy, i) => {
+            if (rectCollision(drone, enemy)) {
+              createExplosion(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2);
+              enemies.splice(i, 1);
+              score += 10;
+            }
+          });
+        });
+        if (performance.now() - lastKillTime > 2000) { comboMultiplier = 1; }
+        checkAchievements();
+      } else if (currentState === GameState.PAUSED) {
+        overlay.innerText = "Paused - Press 'P' to Resume";
+        overlay.classList.add("visible");
+      } else if (currentState === GameState.GAMEOVER) {
+        updateHighScore();
+        overlay.innerHTML = `Game Over<br>Your Score: ${score}<br>High Score: ${highScore}<br>Press 'R' to Restart`;
+        overlay.classList.add("visible");
+      }
+    }
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawStars();
+      ctx.save();
+      ctx.translate(shakeOffset.x, shakeOffset.y);
+      if (currentState === GameState.PLAYING) {
+        if (player) player.draw(ctx);
+        projectiles.forEach(proj => proj.draw(ctx));
+        enemies.forEach(enemy => enemy.draw(ctx));
+        advancedEnemies.forEach(enemy => enemy.draw(ctx));
+        bossEnemies.forEach(boss => boss.draw(ctx));
+        meteors.forEach(meteor => meteor.draw(ctx));
+        gammaRays.forEach(ray => ray.draw(ctx));
+        powerUps.forEach(power => power.draw(ctx));
+        drones.forEach(drone => drone.draw(ctx));
+      }
+      particles.forEach(particle => particle.draw(ctx));
+      ctx.restore();
+    }
+    // ------------------ Input Handling ------------------
+    document.addEventListener('keydown', function(event) {
+      if (currentState === GameState.MENU && event.key === 'Enter') {
+        currentState = GameState.PLAYING;
+        player = new Player();
+        projectiles = []; enemies = []; advancedEnemies = []; bossEnemies = [];
+        meteors = []; gammaRays = []; powerUps = []; particles = []; drones = [];
+        enemySpawnTimer = 0; advancedEnemySpawnTimer = 0; bossSpawnTimer = 0;
+        meteorSpawnTimer = 0; gammaRaySpawnTimer = 0; powerUpSpawnTimer = 0;
+        difficulty = 1; score = 0; comboMultiplier = 1;
+        achievementsUnlocked = [];
+        timeScale = 1; timeSlowTimer = 0;
+      } else if (currentState === GameState.PLAYING && event.key.toLowerCase() === 'p') {
+        currentState = GameState.PAUSED;
+      } else if (currentState === GameState.PAUSED && event.key.toLowerCase() === 'p') {
+        currentState = GameState.PLAYING;
+      } else if (currentState === GameState.GAMEOVER && event.key.toLowerCase() === 'r') {
+        currentState = GameState.MENU;
+      }
+      if (player && (event.key === '1' || event.key === '2' || event.key === '3')) {
+        player.currentWeapon = parseInt(event.key);
+      }
+      keysDown[event.key] = true;
+    });
+    document.addEventListener('keyup', function(event) {
+      keysDown[event.key] = false;
+    });
+    // ------------------ Start the Game Loop ------------------
+    requestAnimationFrame(gameLoop);
+  </script>
+  <!-- Ultimate Edition: Extra features include parallax background, screen shake, slow-motion, drone helpers, combo multipliers, and achievement notifications -->
+</body>
+</html>
